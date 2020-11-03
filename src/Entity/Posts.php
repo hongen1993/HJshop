@@ -53,7 +53,7 @@ class Posts
     private $precio_oferta;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
 
     private $sku;
@@ -69,6 +69,16 @@ class Posts
      */
 
     private $user;
+
+    /**
+     * Posts constructor.
+     */
+
+     public function __construct()
+     {
+         $this->likes='';
+         $this->fecha_publicacion = new \DateTime();
+     }
 
     public function getId(): ?int
     {
@@ -159,15 +169,51 @@ class Posts
         return $this;
     }
 
-    public function getSku(): ?int
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
-    public function setSku(int $sku): self
+    public function setSku(string $sku): self
     {
         $this->sku = $sku;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+        /**
+     * @return mixed
+     */
+
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param mixed $comentarios
+     */
+
+    public function setComentarios($comentarios): void
+    {
+        $this->comentarios = $comentarios;
     }
 }

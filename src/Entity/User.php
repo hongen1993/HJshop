@@ -88,7 +88,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="user")
      */
     private $posts;
-
+    
+    /**
+     * User constructor.
+     */
+    
     public function __construct()
     {
         $this->baneado = false;
