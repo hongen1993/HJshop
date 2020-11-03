@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    const REGISTRO_EXITOSO = "Se ha registrado exitosamente";
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -87,6 +88,12 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="user")
      */
     private $posts;
+
+    public function __construct()
+    {
+        $this->baneado = false;
+        $this->roles = ['ROLE_USER'];
+    }
 
     public function getId(): ?int
     {
