@@ -48,18 +48,30 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $apellidos;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numerotelefono;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $fecha_nacimiento;
+    private $fechanacimiento;
 
     /**
+     * @ORM\Column(type="string")
+     */
+
+    private $provincia;
+
+        /**
      * @ORM\Column(type="integer")
      */
-    private $numero_telefono;
 
-    /**
+    private $codigopostal;
+
+        /**
      * @ORM\Column(type="string")
      */
 
@@ -214,18 +226,18 @@ class User implements UserInterface
      * @return mixed
      */
 
-    public function getFecha_nacimiento()
+    public function getFechanacimiento()
     {
-        return $this->fecha_nacimiento;
+        return $this->fechanacimiento;
     }
 
     /**
-     * @param mixed $fecha_nacimiento
+     * @param mixed $fechanacimiento
      */
 
-    public function setFecha_nacimiento($fecha_nacimiento): void
+    public function setFechanacimiento($fechanacimiento): void
     {
-        $this->fecha_de_nacimiento = $fecha_nacimiento;
+        $this->fechanacimiento = $fechanacimiento;
     }
 
     
@@ -233,22 +245,57 @@ class User implements UserInterface
      * @return mixed
      */
 
-    public function getNumero_telefono()
+    public function getNumerotelefono()
     {
-        return $this->numero_telefono;
+        return $this->numerotelefono;
     }
 
     /**
-     * @param mixed $numero_telefono
+     * @param mixed $numerotelefono
      */
 
-    public function setNumero_telefono($numero_telefono): void
+    public function setNumerotelefono($numerotelefono): void
     {
-        $this->numero_telefono = $numero_telefono;
+        $this->numerotelefono = $numerotelefono;
     }
 
     
     /**
+     * @return mixed
+     */
+
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+
+    /**
+     * @param mixed $provincia
+     */
+
+    public function setProvincia($provincia): void
+    {
+        $this->provincia = $provincia;
+    }
+
+        /**
+     * @return mixed
+     */
+
+    public function getCodigopostal()
+    {
+        return $this->codigopostal;
+    }
+
+    /**
+     * @param mixed $codigoPostal
+     */
+
+    public function setCodigopostal($codigopostal): void
+    {
+        $this->codigopostal = $codigopostal;
+    }
+            /**
      * @return mixed
      */
 
@@ -265,5 +312,4 @@ class User implements UserInterface
     {
         $this->direccion = $direccion;
     }
-
 }
