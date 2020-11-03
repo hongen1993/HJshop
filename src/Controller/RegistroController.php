@@ -8,14 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Security\Core\Encoder\UserPasswordEconderInterface;
 
 class RegistroController extends AbstractController
 {
     /**
      * @Route("/registro", name="registro")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -24,6 +25,7 @@ class RegistroController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $user->setBaneado(false);
             $user->setRoles(['ROLE_USER']);
+            $user->setPassword($passwordEncoder->encodePassword($user, $form['password']->getData()));
             $em->persist($user);
             $em->flush();
             $this->addFlash('exito','Se ha registrado exitosamente');
