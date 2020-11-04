@@ -43,4 +43,22 @@ class Category
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * @param mixed $posts
+     */
+
+    public function setPosts($posts): void
+    {
+        $this->posts = $posts;
+    }
 }

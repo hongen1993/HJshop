@@ -20,7 +20,7 @@ class Posts
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titulo;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -92,14 +92,14 @@ class Posts
         return $this->id;
     }
 
-    public function getTitulo(): ?string
+    public function getName(): ?string
     {
-        return $this->titulo;
+        return $this->name;
     }
 
-    public function setTitulo(string $titulo): self
+    public function setName(string $name): self
     {
-        $this->titulo = $titulo;
+        $this->name = $name;
 
         return $this;
     }

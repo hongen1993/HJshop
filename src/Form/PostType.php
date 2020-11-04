@@ -21,7 +21,7 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo')
+            ->add('name')
             ->add('foto', FileType::class,['mapped' => false, 'required' => 'false'])
             ->add('contenido', TextareaType::class)
             ->add('precio', MoneyType::class)
@@ -31,7 +31,6 @@ class PostType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])
-            ->add('guardar', SubmitType::class)
         ;
     }
 
