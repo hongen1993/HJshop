@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Posts;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -25,6 +27,10 @@ class PostType extends AbstractType
             ->add('precio', MoneyType::class)
             ->add('precio_oferta', MoneyType::class)
             ->add('sku')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
             ->add('guardar', SubmitType::class)
         ;
     }
