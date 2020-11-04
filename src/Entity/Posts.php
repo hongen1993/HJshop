@@ -71,6 +71,13 @@ class Posts
     private $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    private $category;
+
+    /**
      * Posts constructor.
      */
 
@@ -199,7 +206,25 @@ class Posts
         $this->user = $user;
     }
 
-        /**
+    /**
+     * @return mixed
+     */
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
      * @return mixed
      */
 
