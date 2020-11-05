@@ -3,5 +3,32 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-{{dump(posts)}}
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'a.id') }}</th>
+        <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Foto', 'a.title') }}
+        </th>
+        <th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Fecha de publicacion', ['a.date', 'a.time']) }}
+        </th>
+    </tr>
+
+    {# table body #}
+    {% for article in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ article.name }}</td>
+            <td>{{ article.foto }}</td>
+            <td>{{ article.fecha_publicacion | date('Y-m-d') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
 {% endblock %}
