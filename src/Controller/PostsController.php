@@ -20,12 +20,16 @@ class PostsController extends AbstractController
     /**
      * @Route("/", name="posts_index", methods={"GET"})
      */
-    public function index(PostsRepository $postsRepository): Response
-    {
-        return $this->render('posts/index.html.twig', [
-            'posts' => $postsRepository->findAll(),
-        ]);
-    }
+
+        public function index(PostsRepository $posts): Response
+        {
+            $em = $this->getDoctrine()->getManager();
+            $posts = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
+            return $this->render('posts/index.html.twig', [
+                'posts' => $posts,
+            ]);
+        }
+    
     /**
      * @Route("/new", name="posts_new", methods={"GET","POST"})
      */

@@ -16,20 +16,26 @@
             </tr>
         </thead>
         <tbody>
-        {% for post in posts %}
+         {% for post in posts %}
             <tr>
-                <td>{{ post.id }}</td>
+            {{dump(post)}}
+{#                  <td>{{ post.id }}</td>
+                <td>{{ post.category.name }}</td>
                 <td>{{ post.name }}</td>
+                <td>{{ post.foto }}</td>
+                <td>{{ post.preciooferta }}</td>
+                <td>{{ post.sku }}</td>
+
                 <td>
                     <a href="{{ path('posts_show', {'id': post.id}) }}">show</a>
                     <a href="{{ path('posts_edit', {'id': post.id}) }}">edit</a>
-                </td>
+                </td>  #}
             </tr>
         {% else %}
             <tr>
                 <td colspan="3">no records found</td>
             </tr>
-        {% endfor %}
+        {% endfor %} 
         </tbody>
     </table>
 
