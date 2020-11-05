@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("/posts")
@@ -21,15 +23,20 @@ class PostsController extends AbstractController
      * @Route("/", name="posts_index", methods={"GET"})
      */
 
-        public function index(PostsRepository $posts): Response
+        public function index(PaginatorInterface $paginator, Request $request): Response
         {
             $em = $this->getDoctrine()->getManager();
-            $posts = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
+            $query = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
+            $pagination = $paginator->paginate(
+                $query, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                2 /*limit per page*/
+            );
             return $this->render('posts/index.html.twig', [
-                'posts' => $posts,
+                    'pagination' => $pagination
             ]);
         }
-    
+
     /**
      * @Route("/new", name="posts_new", methods={"GET","POST"})
      */
@@ -76,13 +83,15 @@ class PostsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="posts_show", methods={"GET"})
+     * @Route("/posts/{id}", name="posts_show", methods={"GET"})
      */
 
-    public function show(Posts $posts): Response
+    public function show(Posts $posts, $id): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository(Posts::class)->find($id);
         return $this->render('posts/show.html.twig', [
-            'posts' => $posts,
+            'post' => $post
         ]);
     }
 

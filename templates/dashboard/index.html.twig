@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}{{parent()}}{% endblock %}
 
 {% block body %}
+    {{parent()}}
+
 <div class="count">
-    {{ pagination.getTotalItemCount }}
+    <p>Articulos en total:{{ pagination.getTotalItemCount }}</p>
 </div>
 <table>
     <tr>

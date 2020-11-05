@@ -2,11 +2,75 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Lenceria Ideal{% endblock %}</title>
+        {% block stylesheets %}
+
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/stylesheet.css')}}">
+        
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+            <nav class="navbar navbar-fixed-top main-nav">
+                <div class="nav navbar-nav navbar-brand mx-auto">
+                    <div class="nav-item"><a id="colorblack" href="{{path('dashboard')}}">Lenceria Ideal</a></div>
+                </div>
+                <div class="nav-item"><a id="colorblack" href="{{path('app_login')}}">Accede</a></div>
+            </nav>
+            <nav class="navbar navbar-fixed-top">
+                <div class="container">
+                    <div class="nav-item dropdown"> 
+                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hombre
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+{#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
+                            <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Camisetas interiores</a></li>
+                            <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Boxer</a></li>
+                            <li><a class="dropdown-item" href="{{path('registro')}}">Calzoncillos</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li> #}
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-item dropdown" id="rightnavbar"> 
+                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mujer
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+{#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
+                            <li><a class="dropdown-item" href="{{path('registro')}}">Camisetas interiores</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Fajas</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Sujetadores</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Bragas</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Tangas</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_login')}}">Picardia</a></li> #}
+                        </ul>
+                    </div>
+                       {#  <div class="nav-item dropdown" id="rightnavbar"> 
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            -
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <form class="form-inline my-2 my-lg-0">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend"></div>
+                                    <input class="form-control" type="search" placeholder="Type here..." aria-label="Search">
+                                    <button class="btn btn-outline-danger btn-sm" type="submit">Search</button>
+                                </div>
+                                </form>
+                        </div> #}
+                </div>
+            </nav>
+
+         {% endblock %}
+         
+        {% block javascripts %}
+        
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+        {% endblock %}
     </body>
 </html>

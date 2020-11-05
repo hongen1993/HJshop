@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Post{% endblock %}
+{% block title %}    {{parent()}} - Create New Post{% endblock %}
 
 {% block body %}
+    {{parent()}}
     <h1>Create new Post</h1>
 
     {{ include('posts/_form.html.twig') }}

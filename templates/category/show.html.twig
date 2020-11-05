@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %}    {{parent()}} - Category{% endblock %}
 
 {% block body %}
+    {{parent()}} 
     <h1>Category</h1>
 
     <table class="table">

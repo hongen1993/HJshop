@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'signikabold';
+    src: url('../fonts/signika-bold-webfont.woff2') format('woff2'),
+         url('../fonts/signika-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../fonts/signika-regular-webfont.woff2') format('woff2'),
+    url('../fonts/signika-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'remachine_script_personal_uRg';
+    src: url('../fonts/remachinescript_personal_use-webfont.woff2') format('woff2'),
+    url('../fonts/remachinescript_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    background-color:#fff;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    font-family: 'PT Sans', sans-serif;
+
+
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'PT Sans', sans-serif;
+    color: #000;
+    text-align: center;
+}
+
+.navbar{
+    background-color:#fff /* #006cbe Color azul perfecto*/ !important;
+    font-family: remachine_script_personal_uRg;
+    font-size: 1.3em;
+    max-height: 3.3em;
+}
+
+.navbar-brand{
+    font-family: remachine_script_personal_uRg;
+    font-size: 2em;
+    color: #000 !important;
+}
+
+.navbar-brand a:hover{
+    text-decoration: none;
+}
+
+.nav-link{
+    color: #000 !important;
+    width: 25em;
+    text-align: center;
+}
+
+.fa-user, .bg-yellow {
+    color: #ffceba;
+    font-size: 0.8em;
+}
+.fa-clock, .bg-green{
+    color: #ffceba;
+    font-size: 0.8em;
+}
+
+.cursor:hover{
+    cursor: pointer;
+}
+.dropdown-menu a{
+    color: #000 !important;
+}
+
+#colorblack{
+    color:#000;
+}
+
