@@ -3,26 +3,45 @@
 {% block title %} {{parent()}} - Post{% endblock %}
 
 {% block body %}
-    {{parent()}}
-{{dump(article)}}
-{#     <h1>Posts</h1>
+{{parent()}}
+<div class="container">
+    <br>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ posts.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ posts.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <hr>
+    <div class="row no-gutters">
+        <div class="col-lg-4 col-md-6">
+                <div class="align-self-center">
+                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
+                </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+                <div class="align-self-center">
+                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
+                </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+             <h3>{{post.name}}</h3>
+                <button type="button" class="btn btn-default" style="color:#FF0120;" onClick="MeGusta({{post.id}})" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                </button>
+                <hr>
+            <div class="text-justify my-3">
+                <p>{{post.contenido}}</p>
+                <p>Antes <s>{{post.precio}}</s> €</p>
+                <p>Ahora {{post.preciooferta}} €</p>
+            </div>
+            <button type="button" class="btn btn-outline-danger">Añadir al carrito</button>
+                <hr>
+            <div style="color:#000;">
+                <i class="far fa-clock"></i>Fecha de publicación:{{post.fechapublicacion | date}}
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('posts_index') }}">back to list</a>
-
-    <a href="{{ path('posts_edit', {'id': posts.id}) }}">edit</a>
-
-    {{ include('posts/_delete_form.html.twig') }} #}
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+{# <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script> #}
+<script src="{{ asset('js/ajax-call.js')}}"></script>
 {% endblock %}

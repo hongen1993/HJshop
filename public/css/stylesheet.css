@@ -22,19 +22,27 @@
     font-style: normal;
 
 }
+@font-face {font-family: "HMSansLatin-Regular";
+            src: url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.eot"); 
+            src: url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.eot?#iefix") 
+            format("embedded-opentype"), url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.woff2") 
+            format("woff2"), url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.woff") 
+            format("woff"), url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.ttf") 
+            format("truetype"), url("//db.onlinewebfonts.com/t/09c8fb44d2c62d99647e4ce58736293e.svg#HMSansLatin-Regular") 
+            format("svg"); }
 
 body {
     background-color:#fff;
     background-repeat: no-repeat;
     background-size: 100%;
     background-attachment: fixed;
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'HMSansLatin-Regular', sans-serif;
 
 
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'HMSansLatin-Regular', sans-serif;
     color: #000;
     text-align: center;
 }
@@ -82,3 +90,9 @@ h1,h2,h3,h4,h5,h6{
     color:#000;
 }
 
+.imgpost{
+    width:325px;
+    height:300px;
+    padding:0px;
+    border-radius: 2%;
+}

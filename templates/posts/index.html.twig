@@ -3,41 +3,42 @@
 {% block title %}    {{parent()}}- Posts Index{% endblock %}
 
 {% block body %}
-    {{parent()}}
-<h1>Posts index</h1>
+{{parent()}}
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
-    <a href="{{ path('posts_new') }}">Create new</a>
-<div class="count">
-    <p>Number of articles:{{ pagination.getTotalItemCount }}</p>
-</div>
-<table>
-    <tr>
-        {# sorting of properties based on query components #}
-       
-        <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'a.id') }}</th>
-        <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
-            {{ knp_pagination_sortable(pagination, 'Foto', 'a.title') }}
-        </th>
-        <th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
-            {{ knp_pagination_sortable(pagination, 'Fecha de publicacion', ['a.date', 'a.time']) }}
-        </th>
-    </tr>
 
-    {# table body #}
-    {% for article in pagination %}
-        <tr {% if loop.index is odd %}class="color"{% endif %}>
-            <td>{{ article.name }}</td>
-            <td>{{ article.foto }}</td>
-            <td>{{ article.fecha_publicacion | date('Y-m-d') }}</td>
-        </tr>
-    {% endfor %}
-</table>
-{# display navigation #}
-<div class="navigation">
-    {{ knp_pagination_render(pagination) }}
+
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 cursor">
+            {% for post in pagination %}
+            <div class="bg-white rounded p-3 my-3" id="greybackground" onclick="window.location.href='{{path('posts_index',{id:post.id})}}'">
+                <div class="d-flex bd-highlight rounded h-50" >
+                    <div class="p-2 flex-grow-1 bd-highlight ">
+                        <h3>{{post.name}}</h3>
+                        <div class="align-self-center">
+                            <img class="rounded hoverable" src="{{ asset('uploads/photos/'~post.foto)}}" width="450px">
+                        </div>
+                        <div class="bg-green"><i class="far fa-clock"></i><strong>Fecha de publicación: {{ post.fecha_publicacion | date}}</strong></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="d-flex justif-content-center">
+    <div class="navigation">
+        {{knp_pagination_render(pagination)}}
+    </div>
+</div>
+
+
+{#  
 ----------------------------------------------------------------------
-{#     <h1>Posts index</h1>
+   <h1>Posts index</h1>
 
     <a href="{{ path('posts_new') }}">Create new</a>
 
@@ -70,8 +71,4 @@
                 <td colspan="3">no records found</td>
             </tr>
         {% endfor %}  #}
-        </tbody>
-    </table>
-
-
 {% endblock %}
