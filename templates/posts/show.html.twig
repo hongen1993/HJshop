@@ -21,10 +21,12 @@
         </div>
         <div class="col-lg-4 col-md-6">
              <h3>{{post.name}}</h3>
-                <button type="button" class="btn btn-default" style="color:#FF0120;" onClick="MeGusta({{post.id}})" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                </button>
-                <hr>
+            <div class="my-3 text-right " style="color:#bbb;" onClick="MeGusta({{post.id}})">
+                <input type="checkbox" id="btnLikeControl"/>
+                <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
+                </label>  
+            </div>
+            
             <div class="text-justify my-3">
                 <p>{{post.contenido}}</p>
                 <p>Antes <s>{{post.precio}}</s> €</p>

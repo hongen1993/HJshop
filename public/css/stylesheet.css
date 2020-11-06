@@ -96,3 +96,17 @@ h1,h2,h3,h4,h5,h6{
     padding:0px;
     border-radius: 2%;
 }
+
+.postsRow{
+    margin-top: 5em;
+}
+
+#btnLikeControl {
+    display: none;
+}
+#btnLikeControl:checked + label >  i {
+    color: #FF0120;
+}
+.btnLikeColor:hover{
+    color: #FF0120;
+}
