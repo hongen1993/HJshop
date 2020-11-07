@@ -4,6 +4,7 @@
 
 {% block body %}
 {{parent()}}
+{% set LikesDeEstePost = post.likes | split(',') %}
 <div class="container">
     <br>
 
@@ -25,6 +26,11 @@
                 <input type="checkbox" id="btnLikeControl"/>
                 <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
                 </label>  
+                {% if app.user.id in LikesDeEstePost %}
+                    Te gustó esto
+                    {% else %}
+                    ¿Te gusta esto?
+                    {% endif %}
             </div>
             
             <div class="text-justify my-3">
@@ -43,6 +49,6 @@
 {% block javascripts %}
 {{parent()}}
 <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-{# <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script> #}
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script src="{{ asset('js/ajax-call.js')}}"></script>
 {% endblock %}
