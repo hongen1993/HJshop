@@ -90,6 +90,9 @@ h1,h2,h3,h4,h5,h6{
     color:#000;
 }
 
+#colorRed{
+    color:#FF0120;
+}
 .imgpost{
     width:325px;
     height:300px;
@@ -100,13 +103,22 @@ h1,h2,h3,h4,h5,h6{
 .postsRow{
     margin-top: 5em;
 }
-
+/* Likes */
+.btnLikeColor:hover{
+    color: #FF0120;
+}
 #btnLikeControl {
     display: none;
 }
 #btnLikeControl:checked + label >  i {
     color: #FF0120;
 }
-.btnLikeColor:hover{
-    color: #FF0120;
+/* Fecha de publicacion */
+
+.publicationDate{
+    font-size: 9px;
+}
+/* Font Size de Posts */
+.postTextSize{
+    font-size: 13px;
 }

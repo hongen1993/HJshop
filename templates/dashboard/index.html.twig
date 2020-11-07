@@ -11,16 +11,21 @@
         {% for post in pagination %}
             <div class="col-md-3 cursor">
                 <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
-                    <h3>{{post.name}}</h3>
+                    <h5>{{post.name}}</h5>
                         <div class="align-self-center">
                             <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~post.foto)}}" width="100%" height="175px">
-                                <button type="button" class="btn btn-outline-danger">
-                                    <div class="text-justify my-3">
-                                        <p> Antes : <s>{{post.precio}}</s> € Ahora : {{post.precio_oferta}} € <i class="fas fa-cart-arrow-down"></i></p>
-                                    </div>
-                                </button>
-                                <hr>
-                                <i class="far fa-clock" style="color:#000"></i> Fecha de publicación: {{ post.fecha_publicacion | date}}
+                                <div class="text-center">
+                                <p class="my-2 postTextSize"> Antes : <s>{{post.precio}}</s> <span id="colorRed">Ahora : {{post.precio_oferta}} €</span>
+                                    <button type="button" class="btn btn-light btn-sm">
+                                        <i class="fas fa-cart-arrow-down"></i>
+                                    </button>
+                                    </p>
+                                </div>
+                                <div class="publicationDate text-center">
+
+                                    <p><i class="far fa-clock" style="color:#000"></i>
+                                     Fecha de publicación: {{ post.fecha_publicacion | date}}</p>
+                                </div>
                         </div>
                     <hr>
                 </div>      

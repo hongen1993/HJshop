@@ -17,7 +17,18 @@
                     <h3>{{post.name}}</h3>
                         <div class="align-self-center">
                             <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~post.foto)}}" width="100%" height="175px">
-                            <i class="far fa-clock" style="color:#000"></i> Fecha de publicación: {{ post.fecha_publicacion | date}}
+                                <div class="text-center postTextSize">
+                                <p class="my-2"> Antes : <s>{{post.precio}}</s> <span id="colorRed">Ahora : {{post.precio_oferta}} €</span>
+                                    <button type="button" class="btn btn-light btn-sm">
+                                        <i class="fas fa-cart-arrow-down"></i>
+                                    </button>
+                                    </p>
+                                </div>
+                                <div class="publicationDate">
+                                    <br>
+                                    <p><i class="far fa-clock" style="color:#000"></i>
+                                     Fecha de publicación: {{ post.fecha_publicacion | date}}</p>
+                                </div>
                         </div>
                     <hr>
                 </div>      
