@@ -20,7 +20,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class PostsController extends AbstractController
 {
     /**
-     * @Route("/posts", name="posts_index", methods={"GET"})
+     * @Route("/articulos", name="posts_index", methods={"GET"})
      */
 
         public function index(PaginatorInterface $paginator, Request $request): Response
@@ -38,7 +38,7 @@ class PostsController extends AbstractController
         }
 
     /**
-     * @Route("/new", name="posts_new", methods={"GET","POST"})
+     * @Route("articulos/nuevo", name="posts_new", methods={"GET","POST"})
      */
     public function new(Request $request,SluggerInterface $slugger): Response
     {
@@ -83,7 +83,7 @@ class PostsController extends AbstractController
     }
 
     /**
-     * @Route("/posts/{id}", name="posts_show", methods={"GET"})
+     * @Route("/articulo/{id}", name="posts_show", methods={"GET"})
      */
 
     public function show(Posts $posts, $id): Response
@@ -96,7 +96,7 @@ class PostsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="posts_edit", methods={"GET","POST"})
+     * @Route("/articulo/editar/{id}", name="posts_edit", methods={"GET","POST"})
      */
 
     public function edit(Request $request, Posts $posts): Response

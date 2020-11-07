@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}    {{parent()}} - Category index{% endblock %}
+{% block title %}    {{parent()}} - Categorías{% endblock %}
 
 {% block body %}
     {{parent()}}
-    <h1>Category index</h1>
+    <h4>Categorías</h4>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -20,17 +20,18 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">Mostrar </a>
+                    /
+                    <a href="{{ path('category_edit', {'id': category.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">No hay categorías</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('category_new') }}">Create new</a>
+    <a href="{{ path('category_new') }}">Crear nueva categoría</a>
 {% endblock %}

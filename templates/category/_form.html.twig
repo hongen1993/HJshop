@@ -1,12 +1,11 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}     {{parent()}} - Category Form{% endblock %}
+{% block title %}     {{parent()}} - Crear Categorías{% endblock %}
 
 {% block body %}
-    {{parent()}}
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-outline-success">{{ button_label|default('Crear') }}</button>
 {{ form_end(form) }}
 {% endblock %}

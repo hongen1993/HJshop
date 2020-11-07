@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/category")
+ * @Route("/")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="category_index", methods={"GET"})
+     * @Route("/categorias", name="category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -26,7 +26,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="category_new", methods={"GET","POST"})
+     * @Route("/categoria/nueva", name="category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
+     * @Route("/categoria/{id}", name="category_show", methods={"GET"})
      */
     public function show(Category $category): Response
     {
@@ -59,7 +59,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @Route("/categoria/editar/{id}", name="category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category): Response
     {

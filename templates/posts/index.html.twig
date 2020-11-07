@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}    {{parent()}}- Posts Index{% endblock %}
+{% block title %}    {{parent()}}- Artículos{% endblock %}
 
 {% block body %}
 {{parent()}}
@@ -9,7 +9,9 @@
 
 
 </div>
+<br>
 <div class="container">
+    <h3>Todos los artículos</h3>
     <div class="row postsRow">
         {% for post in pagination %}
             <div class="col-md-3 cursor">
