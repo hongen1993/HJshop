@@ -4,43 +4,47 @@
 
 {% block body %}
 {{parent()}}
+
 {% set LikesDeEstePost = post.likes | split(',') %}
 <div class="container">
     <br>
 
     <hr>
     <div class="row no-gutters">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4">
                 <div class="align-self-center">
                     <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
                 </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4">
                 <div class="align-self-center">
-                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
+                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.fotob}}">
                 </div>
         </div>
         <div class="col-lg-4 col-md-6">
              <h3>{{post.name}}</h3>
-            <div class="my-3 text-right " style="color:#bbb;" onClick="MeGusta({{post.id}})">
-                <input type="checkbox" id="btnLikeControl"/>
-                <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
-                </label>  
+            <div class="my-3 text-right " style="color:#bbb;">
+                <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
+
                 {% if app.user.id in LikesDeEstePost %}
                     Te gustó esto
+                                    <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
+                </label>  
                     {% else %}
                     ¿Te gusta esto?
+                                    <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
+                </label>  
                     {% endif %}
             </div>
             
             <div class="text-justify my-3">
                 <p>{{post.contenido}}</p>
-                <p class="my-2 postTextSize"> Antes : <s>{{post.precio}}</s> <span id="colorRed">Ahora : {{post.preciooferta}} €</span>
+                <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
             </div>
             <button type="button" class="btn btn-outline-danger">Añadir al carrito</button>
                 <hr>
             <div class="publicationDate" style="color:#000;">
-                <i class="far fa-clock"></i>Fecha de publicación : {{post.fechapublicacion | date}}
+                <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}
             </div>
         </div>
     </div>

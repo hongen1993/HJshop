@@ -27,6 +27,12 @@ class Category
      */
     private $posts;
     
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $foto;
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -40,6 +46,17 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(string $foto): self
+    {
+        $this->foto = $foto;
 
         return $this;
     }
@@ -62,3 +79,4 @@ class Category
         $this->posts = $posts;
     }
 }
+

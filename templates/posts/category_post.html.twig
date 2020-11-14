@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}    {{parent()}}- Artículos{% endblock %}
+
+{% block body %}
+{{parent()}}
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+
+
+            {% if app.user %}
+                <div class="mb-3" style="text-align:right">
+                    <p>Hola {{ app.user.nombre }} ! </p> 
+                    <a href="{{ path('app_logout') }}" style="font-size:10px">Salir</a>
+                </div>
+            {% endif %}
+<div class="container">
+        {% for post in pagination [:1] %}
+            <h3>{{post.category.name}}</h3>
+        {% endfor %}
+    <div class="row postsRow">
+        {% for post in pagination %}
+            <div class="col-md-3 cursor">
+                <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
+                    <h3>{{post.name}}</h3>
+                        <div class="align-self-center">
+                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~post.foto)}}" width="100%" height="250px">
+                                <div class="text-center postTextSize">
+                                 <p class="my-2"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span> 
+                                    <button type="button" class="btn btn-light btn-sm">
+                                        <i class="fas fa-cart-arrow-down"></i>
+                                    </button>
+                                    </p>
+                                </div>
+                                <div class="publicationDate">
+                                    <br>
+                                    <p><i class="far fa-clock" style="color:#000"></i>
+                                      Fecha de publicación: {{ post.fechaPublicacion | date}}</p>
+                                </div>
+                        </div>
+                    <hr>
+                </div>      
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="d-flex justif-content-center">
+    <div class="navigation">
+        {{knp_pagination_render(pagination)}}
+    </div>
+</div>
+{% endblock %}

@@ -6,10 +6,7 @@ use App\Entity\Category;
 use App\Entity\Posts;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,10 +20,11 @@ class PostType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('foto', FileType::class,['mapped' => false, 'required' => 'false'])
+            ->add('foto', FileType::class,['label' => 'Seleccionar foto A','mapped' => false, 'required' => 'false'])
+            ->add('fotoB', FileType::class,['label' => 'Seleccionar foto B','mapped' => false, 'required' => 'false'])
             ->add('contenido', TextareaType::class)
+            ->add('precioAntes', MoneyType::class)
             ->add('precio', MoneyType::class)
-            ->add('precio_oferta', MoneyType::class)
             ->add('sku')
             ->add('category', EntityType::class, [
                 'class' => Category::class,

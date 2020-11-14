@@ -6,9 +6,7 @@
     {{parent()}}
     <h4>Editar Categoría</h4>
 
-    {{ include('category/_form.html.twig', {'button_label': 'Editar'}) }}
-
-    <a href="{{ path('category_index') }}">Regresar</a>
-
+    {{ include('category/_form.html.twig', {'button_label': 'Guardar cambios'}) }}
+    <br>
     {{ include('category/_delete_form.html.twig') }}
 {% endblock %}

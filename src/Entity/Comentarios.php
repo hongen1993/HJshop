@@ -25,7 +25,7 @@ class Comentarios
     /**
      * @ORM\Column(type="datetime")
      */
-    private $fecha_publicacion;
+    private $fechaPublicacion;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="comentarios")
@@ -58,12 +58,12 @@ class Comentarios
 
     public function getFechaPublicacion(): ?\DateTimeInterface
     {
-        return $this->fecha_publicacion;
+        return $this->fechaPublicacion;
     }
 
-    public function setFechaPublicacion(\DateTimeInterface $fecha_publicacion): self
+    public function setFechaPublicacion(\DateTimeInterface $fechaPublicacion): self
     {
-        $this->fecha_publicacion = $fecha_publicacion;
+        $this->fechaPublicacion = $fechaPublicacion;
 
         return $this;
     }

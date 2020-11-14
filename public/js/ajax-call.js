@@ -1,5 +1,5 @@
 function MeGusta(id){
-    var Ruta = Routing.generate('Likes');
+     var Ruta = Routing.generate('Likes'); 
     $.ajax({
         type:'POST',
         url: Ruta,

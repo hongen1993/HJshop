@@ -1,37 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}    {{parent()}} - Categorías{% endblock %}
+{% block title %}    {{parent()}}- Categorías{% endblock %}
 
 {% block body %}
-    {{parent()}}
-    <h4>Categorías</h4>
+{{parent()}}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">Mostrar </a>
-                    /
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">Editar</a>
-                </td>
-            </tr>
-        {% else %}
+<div class="container">
+    <h3>Todas las categorías</h3>
+    <div class="row postsRow">
+        {% for category in pagination  %}
+            <div class="col-md-3 cursor">
+                <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
+                    <h3>{{category.name}}</h3>
+                        <div class="align-self-center">
+                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
+                        </div>
+                    <hr>
+                </div>      
+            </div>
+             {% else %}
             <tr>
                 <td colspan="3">No hay categorías</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('category_new') }}">Crear nueva categoría</a>
+        <a href="{{ path('category_new') }}">Crear nueva categoría</a>
+    </div>
+</div>
+<div class="d-flex justif-content-center">
+    <div class="navigation">
+        {{knp_pagination_render(pagination)}}
+    </div>
+</div>
 {% endblock %}

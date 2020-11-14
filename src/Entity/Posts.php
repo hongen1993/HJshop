@@ -28,14 +28,20 @@ class Posts
     private $likes;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $foto;
 
     /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $fotoB;
+
+
+    /**
      * @ORM\Column(type="datetime")
      */
-    private $fecha_publicacion;
+    private $fechaPublicacion;
 
     /**
      * @ORM\Column(type="string", length=80000)
@@ -48,9 +54,9 @@ class Posts
     private $precio;
 
     /**
-     * @ORM\Column(type="decimal", precision=4, scale=2)
+     * @ORM\Column(type="decimal", precision=4, scale=2,nullable=true)
      */
-    private $precio_oferta;
+    private $precioAntes;
 
     /**
      * @ORM\Column(type="string")
@@ -84,7 +90,7 @@ class Posts
      public function __construct()
      {
          $this->likes='';
-         $this->fecha_publicacion = new \DateTime();
+         $this->fechaPublicacion = new \DateTime();
      }
 
     public function getId(): ?int
@@ -127,15 +133,26 @@ class Posts
 
         return $this;
     }
+    public function getFotoB(): ?string
+    {
+        return $this->fotoB;
+    }
+
+    public function setFotoB(string $fotoB): self
+    {
+        $this->fotoB = $fotoB;
+
+        return $this;
+    }
 
     public function getFechaPublicacion(): ?\DateTimeInterface
     {
-        return $this->fecha_publicacion;
+        return $this->fechaPublicacion;
     }
 
-    public function setFechaPublicacion(\DateTimeInterface $fecha_publicacion): self
+    public function setFechaPublicacion(\DateTimeInterface $fechaPublicacion): self
     {
-        $this->fecha_publicacion = $fecha_publicacion;
+        $this->fechaPublicacion = $fechaPublicacion;
 
         return $this;
     }
@@ -164,14 +181,14 @@ class Posts
         return $this;
     }
 
-    public function getPrecioOferta(): ?string
+    public function getPrecioAntes(): ?string
     {
-        return $this->precio_oferta;
+        return $this->precioAntes;
     }
 
-    public function setPrecioOferta(string $precio_oferta): self
+    public function setPrecioAntes(string $precioAntes): self
     {
-        $this->precio_oferta = $precio_oferta;
+        $this->precioAntes = $precioAntes;
 
         return $this;
     }

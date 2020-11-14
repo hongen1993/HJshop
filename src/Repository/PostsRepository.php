@@ -21,11 +21,10 @@ class PostsRepository extends ServiceEntityRepository
     public function BuscarTodosLosPosts(){
         return $this->getEntityManager()
             ->createQuery('
-            SELECT  post.id, post.name, post.foto, post.precio, post.precio_oferta, post.fecha_publicacion
+            SELECT  post.id, post.name, post.foto, post.precioAntes, post.precio, post.fechaPublicacion
             From App:Posts post
             ');
     }
-
     // /**
     //  * @return Posts[] Returns an array of Posts objects
     //  */
