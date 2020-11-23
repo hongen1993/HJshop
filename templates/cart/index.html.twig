@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+{{ parent() }}
+    <div class="bg-light p-3">
+        <h1>Carrito de compra</h1>
+    </div>
+        {% if items | length > 0 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Articulo</th>
+                        <th>Imagen</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{item.post.name}}</td>
+                            <td><img class="rounded hoverable" src="{{ asset('uploads/fotos/'~item.post.foto)}}"width="130px" height="90px">
+                            <td>{{item.post.precio}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.post.precio * item.quantity}}</td>
+                            <td>
+                                <a href="{{ path('cart_remove', {'id': item.post.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Total:
+                        </td>
+                        <td>{{ total }}</td>
+                        <td></td>
+            </table>
+            {% else %}
+            <p> La vida es Bella</p>
+        {% endif %}
+{# onclick="window.location.href='/categoria/{{category.id}}/index'" #}
+{% endblock %}
