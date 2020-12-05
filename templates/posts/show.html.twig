@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{parent()}} - Post{% endblock %}
-
 {% block body %}
 {{parent()}}
 
 {% set LikesDeEstePost = post.likes | split(',') %}
 <div class="container">
     <br>
-
     <hr>
     <div class="row no-gutters">
         <div class="col-lg-4">
@@ -24,7 +22,7 @@
         <div class="col-lg-4 col-md-6">
              <h3>{{post.name}}</h3>
             <div class="my-3 text-right " style="color:#bbb;">
-                <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
+{#                 <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
 
                 {% if app.user.id in LikesDeEstePost %}
                     Te gustó esto
@@ -34,14 +32,14 @@
                     ¿Te gusta esto?
                                     <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
                 </label>  
-                    {% endif %}
+                    {% endif %} #}
             </div>
             
             <div class="text-justify my-3">
                 <p>{{post.contenido}}</p>
                 <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
             </div>
-            <button type="button" class="btn btn-outline-danger">Añadir al carrito</button>
+            <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger">Añadir al carrito</a>
                 <hr>
             <div class="publicationDate" style="color:#000;">
                 <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}

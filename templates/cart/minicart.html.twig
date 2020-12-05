@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Carrito de la Compra{% endblock %}
 
 {% block body %}
-{{ parent() }}
-            <h1 style="padding-top:1em">Carrito de la compra</h1>
-     <div class="container">
-        <div class="row text-center login-page">
-	        <div class="col-md-12 login-form">
+    <div  class="cursor textDecorationNone">
+        <h3 style="padding-top:1em"><a href="{{path ('cart_index') }}">Carrito de la compra</a></h3>
+    </div> 
+    <div class="container">
+        <div class="row text-center">
+	        <div class="col-md-12">
         {% if items | length > 0 %}
             <table class="table">
                 <thead>
@@ -45,7 +47,7 @@
             {% else %}
             <p>¡No has añadido ningun articulo aún!</p>
         {% endif %}
-        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-success">Pagar</button>
         </div>
   </div>
   </div>

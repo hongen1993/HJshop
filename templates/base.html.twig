@@ -8,47 +8,51 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/stylesheet.css')}}">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
         {% endblock %}
     </head>
-    <body>
-    
         {% block body %}
-            <nav class="navbar navbar-fixed-top main-nav">
-                <div class="nav navbar-nav navbar-brand mx-auto">
-                    <div class="nav-item"><a id="colorblack" href="{{path('dashboard')}}">Lenceria Ideal</a></div>
-                </div>
-                <div class="nav-item"><a href="{{path('app_login')}}"><i class="far fa-user" id="colorblack"></i></a></div>
-            </nav>
-            <nav class="navbar navbar-fixed-top">
-                <div class="container">
-                    <div class="nav-item dropdown"> 
+    <header>
+        <div class="nav">
+            <a href="{{path('dashboard')}}">
+                <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
+                </a>
+        </div>   
+      <nav class="navbar navbar-fixed-top ">
+        <div class="container">
+                    <div class="nav-item dropdown box"> 
                         <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hombre
+                            Hombre
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-{#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
-                            <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Camisetas interiores</a></li>
-                            <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Boxer</a></li>
-                            <li><a class="dropdown-item" href="{{path('registro')}}">Calzoncillos</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li> #}
-                        </ul>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
+                                <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Camisetas interiores</a></li>
+                                <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Boxer</a></li>
+                                <li><a class="dropdown-item" href="{{path('registro')}}">Calzoncillos</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li> #}
+                            </ul>
                     </div>
-                    
-                    <div class="nav-item dropdown" id="rightnavbar"> 
+                    <div class="nav-item dropdown box" id="rightnavbar"> 
                         <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mujer
+                            Mujer
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-{#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
-                            <li><a class="dropdown-item" href="{{path('registro')}}">Camisetas interiores</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Fajas</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Sujetadores</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Bragas</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Tangas</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li>
-                            <li><a class="dropdown-item" href="{{path('app_login')}}">Picardia</a></li> #}
-                        </ul>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {#                          <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
+                                <li><a class="dropdown-item" href="{{path('registro')}}">Camisetas interiores</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Fajas</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Sujetadores</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Bragas</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Tangas</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li>
+                                <li><a class="dropdown-item" href="{{path('app_login')}}">Picardia</a></li> #}
+                            </ul>
                     </div>
+
+{#                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{path('app_login')}}"></a>
+                        <a class="dropdown-item" href="{{path('cart_index')}}"><i class="fas fa-shopping-cart" id="colorblack"></i></a>
+                </div> #}
                        {#  <div class="nav-item dropdown" id="rightnavbar"> 
                             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             -
@@ -62,17 +66,30 @@
                                 </div>
                                 </form>
                         </div> #}
+                        <div class="nav-item dropleft" id="topnavbar"> 
+                            <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                                <div class="dropdown-menu">
+                                    {{ render(controller('App\\Controller\\CartController:minicart')) }}
+                                </div>
+                        </div>
+                        <div class="nav-item dropdown" id="topnavbar2">
+                            <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-user" id="colorblack"></i>
+                            </button>
+                                <div class="dropdown-menu">   
+                                    {{ render(controller('App\\Controller\\SecurityController:minilogin')) }}
+                                </div>
+                        </div>
                 </div>
             </nav>
-
-         {% endblock %}
-         
+    </header>
+    {% endblock %}         
         {% block javascripts %}
-        
-        <script src="{{asset('js/jquery.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="https://kit.fontawesome.com/c469a8b399.js" crossorigin="anonymous"></script>
-
+            <script src="{{asset('js/jquery.min.js')}}"></script>
+            <script src="{{asset('js/bootstrap.min.js')}}"></script>
+            <script src="https://kit.fontawesome.com/c469a8b399.js" crossorigin="anonymous"></script>
+            <script src="{{asset('js/footer.js')}}"></script>
         {% endblock %}
-    </body>
 </html>

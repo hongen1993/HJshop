@@ -3,39 +3,87 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {{parent()}}
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+{#    <nav class="navbar navbar-fixed-top main-nav navbarTopDrop">
+      <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="far fa-user" id="colorblack"></i>
+      </button> #}
 
+          <form method="post" class="px-2 py-8">
             {% if app.user %}
-                <div class="mb-3" style="text-align:right">
-                    <p>Hola {{ app.user.nombre }} ! </p> 
-                    <a href="{{ path('app_logout') }}" style="font-size:10px">Salir</a>
-                </div>
+              <div class="mb-3" style="text-align:right">
+                <p>Hola {{ app.user.nombre }} ! </p> 
+                <a href="{{ path('app_logout') }}" style="font-size:10px">Salir</a>
+              </div>
             {% endif %}
-            <div class="container h-100">
-                <div class="row h-100 justify-content-center align-items-center">
-                    <div class="col-6 bg-white rounded my-3 p-5">
-                        <h4 class="h3 mb-3 font-weight-normal">Inicia sesión</h4>
-                        <label for="inputEmail">Email</label>
-                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-                            <label for="inputPassword">Password</label>
-                            <input type="password" name="password" id="inputPassword" class="form-control" required>
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                            <br>
-                            <button class="btn btn-lg btn-primary" type="submit">
-                                Sign in
-                            </button>
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" name="_remember_me"> Recordarme en este dispositivo
-                            </label>
-                        </div>
-                        <p>¿Aún no tienes cuenta? <a href="{{path('registrarse')}}">Regístrate aqui</a></p>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="inputEmail">Correo electronico</label>
+                  <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="email@example.com" required autofocus>
             </div>
-        </form>
+            <div class="form-group">
+              <label for="inputPassword">Contraseña</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </div>
+              <button type="submit" class="btn btn-primary">
+                Acceder
+              </button>
+            <div class="form-check">
+              <label class="form-check-label" for="dropdownCheck">
+                  <input type="checkbox" class="form-check-input" id="dropdownCheck" name="_remember_me">
+                    Recordarme
+              </label>
+            </div>
+          </form>
+          <div class="dropdown-divider"></div>
+            <p>¿No tienes cuenta?<a href="{{path('registrarse')}}"> Regístrate</a></p>
+          
+{#     <div class="container">
+                        {% if error %}
+                           <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                     {% endif %}
+                        {% if app.user %}
+                        <div class="mb-3" style="text-align:right">
+                            <p>Hola {{ app.user.nombre }} ! </p> 
+                            <a href="{{ path('app_logout') }}" style="font-size:10px">Salir</a>
+                          </div>
+                    {% endif %}
+      <div class="d-flex justify-content-center h-100">
+        <div class="card">
+          <div class="card-header">
+            <h3>Sign In</h3>
+            <div class="d-flex justify-content-end social_icon">
+              <span><i class="fab fa-facebook-square"></i></span>
+              <span><i class="fab fa-google-plus-square"></i></span>
+              <span><i class="fab fa-twitter-square"></i></span>
+            </div>
+          </div>
+          <div class="card-body">
+                <form method="post">
+                     <div class="form-group">
+                           <label for="inputEmail">Correo electronico</label>
+                               <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="email@example.com" required autofocus>
+                       </div>
+                     <div class="form-group">
+                           <label for="inputPassword">Contraseña</label>
+                         <input type="password" name="password" id="inputPassword" class="form-control" required>
+                           <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                     </div>
+                       <button type="submit" class="btn btn-primary">
+                          Acceder
+                    </button>
+                     <div class="form-check">
+                          <label class="form-check-label" for="dropdownCheck">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck" name="_remember_me">
+                                   Recordarme
+                                        </label>
+                       </div>
+                  </form>
+                </div>
+                <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                  ¿No tienes cuenta?<a href="{{path('registrarse')}}"> Regístrate</a>
+                </div>
+              </div>
+            </div>
+          </div> #}
 {% endblock %}
