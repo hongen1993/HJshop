@@ -1,0 +1,16 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}    {{parent()}} - User Form {% endblock %}
+
+{% block body %}
+  <div class="row justify-content-md-center">
+        <div class="col-8">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-outline-success">{{ button_label|default('Guardar') }}</button>
+            <a href="{{ path('user_index', {'id': user.id}) }}" id="colorRed">Cancelar</a>
+        {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %} 

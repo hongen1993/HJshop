@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}    {{parent()}} - Cuenta de Usuario{% endblock %}
+
+{% block body %}
+    {{parent()}} 
+<h3>Cuenta usuario</h3>
+<hr>
+<br>
+<h5><span style = "text-decoration: underline;"> Informacion personal</span></h5>
+<div class="userStats">
+        <form>
+        <br>
+          <div class="row">
+              <div class="col-md-4">
+                  <label>ID de Usuario</label>
+                      <input placeholder="{{ user.id }}" class=".form-control-plaintext" readonly>
+              </div>
+              <div class="col-md-4">
+                  <label>Nombre de Usuario</label>
+                      <input placeholder="{{ user.nombre }}" readonly>
+              </div>
+              <div class="col-md-4">
+                  <label>Apellidos </label>
+                      <input placeholder="{{ user.apellidos }}" readonly>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-6">
+                <label>Fecha de nacimiento</label>
+                    <input placeholder="{{ user.fechanacimiento | date}}" readonly>
+              </div>
+              <div class="col-md-6">
+                  <label>Correo electronico</label>
+                    <input placeholder="{{ user.email }}" readonly>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Numero de Telefono</label>
+                    <input placeholder="{{ user.numerotelefono }}" readonly>
+              </div>
+              <div class="col-md-6">
+                  <label>Provincia</label>
+                    <input placeholder="{{ user.provincia }}" readonly>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Codigo Postal</label>
+                    <input placeholder="{{ user.codigopostal }}" readonly>
+              </div>
+              <div class="col-md-6">
+                <label>Dirección</label>
+                    <input placeholder="{{ user.direccion }}" readonly>
+              </div>
+          </div>
+          <br>
+        </form>
+        <a href="{{ path('user_editar', {'id': user.id}) }}"> Editar</a>
+          /
+        <a href="{{ path('dashboard') }}">Salir </a>
+        </div>
+</div>
+{% endblock %}

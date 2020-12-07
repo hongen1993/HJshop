@@ -99,7 +99,7 @@ class PostsController extends AbstractController
      * @Route("/articulo/{id}", name="posts_show", methods={"GET"})
      */
 
-    public function show(Posts $posts, $id): Response
+    public function show(Posts $post, $id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $post = $em->getRepository(Posts::class)->find($id);

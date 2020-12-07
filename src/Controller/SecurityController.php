@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -53,4 +56,39 @@ class SecurityController extends AbstractController
             'last_username' => $lastUsername, 'error' => $error
             ]);
     }
+        /**
+     * @Route("/{id}", name="user_index", methods={"GET"})
+     */
+    public function show(User $user, $id): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+        return $this->render('registro/show.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+/**
+ * @Route("/editar/{id}", name="user_editar", methods={"GET","POST"})
+ */
+public function edit(Request $request, User $user): Response
+{
+    $form = $this->createForm(UserType::class, $user);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('user_index', [
+            'id' => $user->getId(),
+        ]);
+    }
+
+    return $this->render('registro/edit.html.twig', [
+        'user' => $user,
+        'form' => $form->createView(),
+        'title' => 'edit userr'
+    ]);
+}
 }

@@ -393,17 +393,6 @@ footer{
 		height: 11em;
 		border-radius: var(--text-radius);
 }
-
-.logonav{
-    height: 20px;
-    width: 20px;
-}
-.footernav{
-    position: absolute;
-    right: 0;
-    top: 50%;
-	transform: translate(-50px, -50%);
-}
 footer ul li{
 	 display: inline-block;
       list-style: none;
@@ -461,4 +450,5 @@ z-index: 5;
 	right: 30%;
 	width: 115px;
 }
+/* user info */
 

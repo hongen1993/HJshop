@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}    {{parent()}} - Editar Usuario{% endblock %}
+
+{% block body %}
+    {{parent()}}
+    <h4>Editar cuenta de usuario</h4>
+
+    {{ include('registro/_form.html.twig', {'button_label': 'Guardar cambios'}) }}
+    <br>
+{% endblock %} 
