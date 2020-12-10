@@ -63,7 +63,11 @@ class Posts
      */
 
     private $sku;
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
 
+    private $stock;
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comentarios", mappedBy="posts")
      */
@@ -257,5 +261,17 @@ class Posts
     public function setComentarios($comentarios): void
     {
         $this->comentarios = $comentarios;
+    }
+    
+    public function getStock(): ?string
+    {
+        return $this->stock;
+    }
+
+    public function setStock(string $stock): self
+    {
+        $this->stock = $stock;
+
+        return $this;
     }
 }

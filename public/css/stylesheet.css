@@ -55,7 +55,6 @@ ul li{
 *:focus {
   outline: 0;
 }
-
 .navbar {
   background-color: #fff !important;
   font-size: 1.3em;
@@ -515,3 +514,48 @@ footer {
   }
 
 /*# sourceMappingURL=stylesheet.css.map */
+ 
+/* User / admin */
+*, *:before, *:after{
+  box-sizing: border-box;
+  padding: 0; margin: 0;
+  text-decoration: none;
+  color: #111;
+}
+
+
+    .adminbutton {
+      width: 30em;
+      left: 40%;
+      background: transparent; 
+      outline: none;
+      position: relative;
+      border: none;
+      padding: 15px 50px;
+      overflow: hidden;
+    }
+
+    /*button:before (attr data-hover)*/
+    .adminbutton:hover:before{opacity: 1; transform: translate(0,0);
+    left:4.05em;  }
+    .adminbutton:before{
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em; left: 0;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 1.6em;
+      opacity: 0;
+      transform: translate(-100%,0);
+      transition: all 10s ease-in-out;
+    }
+      /*button div (button text before hover)*/
+     .adminbutton:hover div{opacity: 0; transform: translate(100%,0)}
+      .adminbutton div{
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 1.6em;
+        transition: all 10s ease-in-out;
+      }
+
+   

@@ -451,4 +451,6 @@ z-index: 5;
 	width: 115px;
 }
 /* user info */
-
+@for $i from 1 through $letters
+span:nth-child(#{$i})
+  transition-delay: 0.025s * $i

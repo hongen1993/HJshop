@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Posts;
+use App\Entity\PropertySearch;
 use App\Form\PostType;
 use App\Form\JsonResponse;
+use App\Form\PropertySearchType;
 use App\Repository\PostsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,15 +39,20 @@ class PostsController extends AbstractController
 
         public function index(PaginatorInterface $paginator, Request $request): Response
         {
+            $search = new PropertySearch();
+            $form = $this->createForm(PropertySearchType::class, $search);
+            $form ->handleRequest($request);
+            
             $em = $this->getDoctrine()->getManager();
-            $query = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
+            $query = $em->getRepository(Posts::class)->findAllVisibleQuery($search);
             $pagination = $paginator->paginate(
                 $query, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
-                10 /*limit per page*/
+                12 /*limit per page*/
             );
             return $this->render('posts/index.html.twig', [
-                    'pagination' => $pagination
+                    'pagination' => $pagination,
+                    'form' => $form->createView()
             ]);
         }
         
@@ -188,7 +195,7 @@ class PostsController extends AbstractController
     }
 
     /**
-     * @Route("/categoria/{category}/index", name="category_id_index", methods={"GET"})
+     * @Route("/categoria/{category}/index", name="category_id_index", methods={"GET", "POST"})
      */
     public function categoryindex(Request $request,$category, PaginatorInterface $paginator): Response
     {
@@ -200,7 +207,7 @@ class PostsController extends AbstractController
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit per page*/
+            12 /*limit per page*/
         );
         return $this->render('posts/category_post.html.twig', [
             'pagination' => $pagination
@@ -226,4 +233,21 @@ class PostsController extends AbstractController
             throw new \Exception('Hacking FAIL');
         }        
     }
+        /**
+     * @Route("/administrador", name="administrador", methods={"GET"})
+     */
+    public function administrador(Request $request, PaginatorInterface $paginator): Response
+    { 
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
+            $pagination = $paginator->paginate(
+                $query, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                12 /*limit per page*/
+            );
+            return $this->render('posts/administrador.html.twig', [
+                    'pagination' => $pagination
+            ]);
+    }
+
 }

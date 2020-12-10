@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}    {{parent()}} - Editar Usuario{% endblock %}
-
+{% block header%}
+{% endblock %}
 {% block body %}
-    {{parent()}}
-    <h4>Editar cuenta de usuario</h4>
+    <div class="nav">
+        <a href="{{path('dashboard')}}">
+            <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
+        </a>
+    </div>
+    <div class="container" style="margin-top:15em">
+        <h4>Editar cuenta de usuario</h4>
 
-    {{ include('registro/_form.html.twig', {'button_label': 'Guardar cambios'}) }}
-    <br>
+        {{ include('registro/_form.html.twig', {'button_label': 'Guardar cambios'}) }}
+    
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
 {% endblock %} 

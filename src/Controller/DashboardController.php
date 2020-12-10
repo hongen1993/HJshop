@@ -18,15 +18,11 @@ class DashboardController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
+        
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository(Posts::class)->BuscarTodosLosPosts();
-        $pagination = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            10 /*limit per page*/
-        );
+        $posts = $em->getRepository(Posts::class)->PostsRecientes();
         return $this->render('dashboard/index.html.twig', [
-            'pagination' => $pagination,
+            'posts' => $posts
         ]);
     }
 }

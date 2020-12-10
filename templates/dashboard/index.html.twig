@@ -54,7 +54,7 @@
                         <div class="row" id="h1Title">
                                 <h1>Articulos más nuevos</h1>
                         </div>
-                        {% for post in pagination %}
+                        {% for post in posts %}
                         <div class="col-md-3 cursor transparent end" style="margin-top:5em">
                             <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
                                 <h5>{{post.name}}</h5>
@@ -77,11 +77,6 @@
                             </div>      
                         </div>
                         {% endfor %}
-                </div>
-            </div>
-            <div class="d-flex justif-content-center">
-                <div class="navigation">
-                    {{knp_pagination_render(pagination)}}
                 </div>
             </div>
         </div>

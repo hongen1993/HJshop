@@ -4,31 +4,59 @@
 
 {% block body %}
 {{parent()}}
-
-<div class="container">
-    <h3>Todas las categorías</h3>
-    <div class="row postsRow">
-        {% for category in pagination  %}
-            <div class="col-md-3 cursor">
-                <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
-                    <h3>{{category.name}}</h3>
-                        <div class="align-self-center">
-                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
-                        </div>
-                    <hr>
-                </div>      
+<body>
+<div class="wrapper bg-white">
+    <div class="wrap bg-white">
+        <div class="container">
+            <h3>Todas las categorías</h3>
+            <div class="row postsRow">
+                {% for category in pagination  %}
+                    <div class="col-md-3 cursor" style="margin-bottom:2em">
+                        <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
+                            <h3>{{category.name}}</h3>
+                                <div class="align-self-center">
+                                    <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
+                                </div>
+                            <br>
+                            <hr>
+                        </div>      
+                    </div>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">No hay categorías</td>
+                    </tr>
+                {% endfor %}
+                <br>
             </div>
-             {% else %}
-            <tr>
-                <td colspan="3">No hay categorías</td>
-            </tr>
-        {% endfor %}
-        <a href="{{ path('category_new') }}">Crear nueva categoría</a>
+        </div>
+        <div style="height:5em">
+            <div class="navigation">
+                   {{knp_pagination_render(pagination)}}
+            </div>
+        </div>
     </div>
 </div>
-<div class="d-flex justif-content-center">
-    <div class="navigation">
-        {{knp_pagination_render(pagination)}}
-    </div>
-</div>
+</body>
+<footer>
+    <div class="footercontent row">
+        <div class="col-3" >
+                <img src="{{ asset('img/hjlogo2.png') }}" class="logo">
+        </div>
+        <div class="col-6 text-center">
+            <p>El contenido de esta página web está protegido por copyright y es propiedad de HJ</p>
+             <p>Comercio mayorista</p>
+            <br>
+            <hr>
+            <br>
+            <p>Web diseñada y creada por : Hongen Shyu Barcel</p>
+           </div>
+           <div class="col-3">
+               <div id="contactfooter">
+                   <p>Tlf de contacto: 644751012</p>
+                <p>Email: Hongen1993@gmail.com</p>
+               </div>
+           </div>            
+       </div>
+</footer>
+
 {% endblock %}

@@ -40,3 +40,5 @@ security:
         - { path: ^/articulo/editar, roles: ROLE_ADMIN }
         - { path: ^/categoria/nueva, roles: ROLE_ADMIN }
         - { path: ^/categoria/editar, roles: ROLE_ADMIN }
+        - { path: ^/administrador, roles: ROLE_ADMIN }
+

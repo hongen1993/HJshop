@@ -5,47 +5,81 @@
 {{parent()}}
 
 {% set LikesDeEstePost = post.likes | split(',') %}
-<div class="container">
-    <br>
-    <hr>
-    <div class="row no-gutters">
-        <div class="col-lg-4">
-                <div class="align-self-center">
-                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
+<div class="wrapper bg-white">
+    <div class="wrap bg-white">
+        <div class="container">
+            <hr>
+            <div class="row no-gutters" style="margin-bottom:10em">
+                <div class="col-lg-4">
+                        <div class="align-self-center">
+                            <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
+                        </div>
                 </div>
-        </div>
-        <div class="col-lg-4">
-                <div class="align-self-center">
-                    <img class="imgpost" src="{{asset('uploads/fotos/')~post.fotob}}">
+                <div class="col-lg-4">
+                        <div class="align-self-center">
+                            <img class="imgpost" src="{{asset('uploads/fotos/')~post.fotob}}">
+                        </div>
                 </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-             <h3>{{post.name}}</h3>
-            <div class="my-3 text-right " style="color:#bbb;">
-{#                 <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
+                <div class="col-lg-4">
+                    <br>
+                    <h3>{{post.name}}</h3>
+                    <br>
+                    <div class="my-3 text-right " style="color:#bbb;">
+        {#                 <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
 
-                {% if app.user.id in LikesDeEstePost %}
-                    Te gustó esto
-                                    <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
-                </label>  
-                    {% else %}
-                    ¿Te gusta esto?
-                                    <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
-                </label>  
-                    {% endif %} #}
+                        {% if app.user.id in LikesDeEstePost %}
+                            Te gustó esto
+                                            <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
+                        </label>  
+                            {% else %}
+                            ¿Te gusta esto?
+                                            <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
+                        </label>  
+                            {% endif %} #}
+                    </div>
+                    
+                    <div class="text-justify my-3">
+                        <p>{{post.contenido}}</p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
+                        <br>
+                        <p>Quedan {{post.stock}} en stock</p>
+                    </div>
+                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger">Añadir al carrito</a>
+                        <hr>
+                    <div class="publicationDate" style="color:#000;">
+                        <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}
+                    </div>
+                </div>
             </div>
-            
-            <div class="text-justify my-3">
-                <p>{{post.contenido}}</p>
-                <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
-            </div>
-            <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger">Añadir al carrito</a>
-                <hr>
-            <div class="publicationDate" style="color:#000;">
-                <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}
-            </div>
+            <br>
         </div>
     </div>
+</div>
+    <footer>
+    <div class="footercontent row">
+        <div class="col-3" >
+                <img src="{{ asset('img/hjlogo2.png') }}" class="logo">
+        </div>
+        <div class="col-6 text-center">
+            <p>El contenido de esta página web está protegido por copyright y es propiedad de HJ</p>
+             <p>Comercio mayorista</p>
+            <br>
+            <hr>
+            <br>
+            <p>Web diseñada y creada por : Hongen Shyu Barcel</p>
+           </div>
+           <div class="col-3">
+               <div id="contactfooter">
+                   <p>Tlf de contacto: 644751012</p>
+                <p>Email: Hongen1993@gmail.com</p>
+               </div>
+           </div>            
+       </div>
+</footer>
 
 {% endblock %}
 {% block javascripts %}

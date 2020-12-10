@@ -4,8 +4,6 @@
 
 {% block body %}
 {{parent()}}
-
-
             {% if app.user %}
                 <div class="mb-3" style="text-align:right">
                     <p>Hola {{ app.user.nombre }} ! </p> 
@@ -14,6 +12,23 @@
             {% endif %}
 <div class="container">
     <h3>Todos los artículos</h3>
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.minPrice) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+     </div>
     <div class="row postsRow">
         {% for post in pagination %}
             <div class="col-md-3 cursor">
@@ -45,8 +60,6 @@
         {{knp_pagination_render(pagination)}}
     </div>
 </div>
-
-
 {#  
 ----------------------------------------------------------------------
    <h1>Posts index</h1>
