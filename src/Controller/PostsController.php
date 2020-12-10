@@ -249,5 +249,4 @@ class PostsController extends AbstractController
                     'pagination' => $pagination
             ]);
     }
-
 }

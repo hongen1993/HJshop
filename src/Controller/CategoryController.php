@@ -157,4 +157,21 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('category_index');
     }
+
+        /**
+     * @Route("/minicategorias", name="minicategory_index", methods={"GET"})
+     */
+    public function miniindex(PaginatorInterface $paginator,Request $request): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+            $query = $em->getRepository(Category::class)->BuscarTodasLasCategorias();
+            $pagination = $paginator->paginate(
+                $query, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                12 /*limit per page*/
+            );
+        return $this->render('category/miniindex.html.twig', [
+            'pagination' => $pagination
+        ]);
+    }
 }
