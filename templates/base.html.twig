@@ -13,41 +13,40 @@
         {% endblock %}
     </head>
         {% block body %}
-    <header>
         <div class="nav">
             <a href="{{path('dashboard')}}">
                 <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
                 </a>
         </div>   
-      <nav class="navbar navbar-fixed-top ">
+    <nav class="navbar navbar-fixed-top ">
         <div class="container">
-                    <div class="nav-item dropdown box"> 
-                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hombre
+            <div class="nav-item dropdown box"> 
+                <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Hombre
                         </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-    {#                             <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
-                                <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Camisetas interiores</a></li>
-                                <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Boxer</a></li>
-                                <li><a class="dropdown-item" href="{{path('registro')}}">Calzoncillos</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li> #}
-                            </ul>
-                    </div>
-                    <div class="nav-item dropdown box" id="rightnavbar"> 
-                        <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mujer
-                        </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {#                           <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
+                        <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Camisetas interiores</a></li>
+                        <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Boxer</a></li>
+                         <li><a class="dropdown-item" href="{{path('registro')}}">Calzoncillos</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li> #}
+                    </ul>
+            </div>
+            <div class="nav-item dropdown box" id="rightnavbar"> 
+                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mujer
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
     {#                          <li><a class="dropdown-item" href="{{path('Registrar-Posts')}}">Pijamas</a></li>
-                                <li><a class="dropdown-item" href="{{path('registro')}}">Camisetas interiores</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Fajas</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Sujetadores</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Bragas</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Tangas</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li>
-                                <li><a class="dropdown-item" href="{{path('app_login')}}">Picardia</a></li> #}
-                            </ul>
-                    </div>
+                         <li><a class="dropdown-item" href="{{path('registro')}}">Camisetas interiores</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Fajas</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Sujetadores</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Bragas</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Tangas</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Calcetines</a></li>
+                        <li><a class="dropdown-item" href="{{path('app_login')}}">Picardia</a></li> #}
+                    </ul>
+            </div>
 
 {#                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{path('app_login')}}"></a>
@@ -66,25 +65,28 @@
                                 </div>
                                 </form>
                         </div> #}
-                        <div class="nav-item dropleft" id="topnavbar"> 
-                            <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                                <div class="dropdown-menu">
-                                    {{ render(controller('App\\Controller\\CartController:minicart')) }}
-                                </div>
-                        </div>
-                        <div class="nav-item dropdown" id="topnavbar2">
-                            <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-user" id="colorblack"></i>
-                            </button>
-                            <div class="dropdown-menu">   
-                                {{ render(controller('App\\Controller\\SecurityController:minilogin')) }}
-                            </div>
+                <div class="nav-item dropleft" id="topnavbar"> 
+                   <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i>
+                   </button>
+                        <div class="dropdown-menu">
+                           {{ render(controller('App\\Controller\\CartController:minicart')) }}
                         </div>
                 </div>
-            </nav>
-    </header>
+                <div class="nav-item dropdown" id="topnavbar2">
+                    <button type="button" class="btn dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user" id="colorblack"></i>
+                    </button>
+                    <div class="dropdown-menu">   
+                        {{ render(controller('App\\Controller\\SecurityController:minilogin')) }}
+                    </div>
+                </div>
+                <div class="nav-item" id="topnavbar3">
+                    <a href="{{path('posts_index')}}"><i class="fas fa-search"></i></a>               
+                </div>
+            </div>
+        </div>
+    </nav>
     {% endblock %}         
         {% block javascripts %}
             <script src="{{asset('js/jquery.min.js')}}"></script>

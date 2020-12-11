@@ -15,7 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 use Symfony\Component\HttpFoundation\File\Exception\CannotWriteFileException;
@@ -248,5 +249,31 @@ class PostsController extends AbstractController
             return $this->render('posts/administrador.html.twig', [
                     'pagination' => $pagination
             ]);
+    }
+
+    public function searchBar(){
+        $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl('handleSearch'))
+        ->add('Nombre',TextType::class)
+        ->add('Buscar', SubmitType::class)
+        ->getForm();
+        return $this->render('posts/searchbar.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+    /**
+     * @Route("/handleSearch", name="handleSearch")
+     * @param Request $request
+     */
+    public function handleSearch(Request $request, PostsRepository $postsRepository){
+        $query = $request->request->get('form')['Nombre'];
+        if($query){
+            $posts = $postsRepository->findPostsByName($query);
+        }
+
+        return $this->render('posts/results.html.twig',[
+            'posts' => $posts
+        ]);
+
     }
 }

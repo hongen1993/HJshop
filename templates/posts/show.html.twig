@@ -9,17 +9,20 @@
     <div class="wrap bg-white">
         <div class="container">
             <hr>
-            <div class="row no-gutters" style="margin-bottom:10em">
-                <div class="col-lg-4">
+            <br>
+            <br>
+
+            <div class="row no-gutters" style="margin-bottom:5em;">
+                <div class="col-lg-7">
                         <div class="align-self-center">
                             <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
                         </div>
                 </div>
-                <div class="col-lg-4">
+{#                 <div class="col-lg-4">
                         <div class="align-self-center">
                             <img class="imgpost" src="{{asset('uploads/fotos/')~post.fotob}}">
                         </div>
-                </div>
+                </div> #}
                 <div class="col-lg-4">
                     <br>
                     <h3>{{post.name}}</h3>
@@ -44,11 +47,13 @@
                         <br>
                         <br>
                         <br>
-                        <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
+                        <p class="my-2 postTextSize"> Antes : <span id="tachado">{{post.precioAntes}}</span> <span id="colorRed">Ahora : {{post.precio}} €</span></p>
                         <br>
                         <p>Quedan {{post.stock}} en stock</p>
                     </div>
+                    <div>
                     <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger">Añadir al carrito</a>
+                    </div>
                         <hr>
                     <div class="publicationDate" style="color:#000;">
                         <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}

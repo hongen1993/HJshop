@@ -3,15 +3,31 @@
 {% block title %}    {{parent()}}- Categorías{% endblock %}
 
 {% block body %}
-        {% for category in pagination  %}
-                <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
-                    <h3>{{category.name}}</h3>
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Buscar por categorias
+        </button>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="row">
+              {% for category in pagination  %}
+                <div class="col-3 bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
                         <div class="align-self-center">
-                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
+                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="40%" height="100px">
+                                {{category.name}}
                         </div>
                     <br>
                     <hr>
                 </div>      
-
         {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+        
 {% endblock %}

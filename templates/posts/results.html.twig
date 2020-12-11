@@ -15,25 +15,10 @@
                 {{ render(controller('App\\Controller\\PostsController:searchBar')) }}                
             </div>
             <br>
-            <h5>Filtrar por precio</h5>
-            {{ form_start(form) }}
-            <div class="form-row">
-                <div class="col">
-                    {{ form_row(form.minPrice) }}
-                </div>
-                <div class="col">
-                    {{ form_row(form.maxPrice) }}
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary">Buscar</button>
-                </div>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
-    <h3>Todos los artículos</h3>
     <div class="row postsRow">
-        {% for post in pagination %}
+        {% for post in posts %}
             <div class="col-md-3 cursor">
                 <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
                     <h3>{{post.name}}</h3>
@@ -56,11 +41,6 @@
                 </div>      
             </div>
         {% endfor %}
-    </div>
-</div>
-<div class="d-flex justif-content-center">
-    <div class="navigation">
-        {{knp_pagination_render(pagination)}}
     </div>
 </div>
 {% endblock %}

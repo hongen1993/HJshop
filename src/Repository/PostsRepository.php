@@ -38,6 +38,29 @@ class PostsRepository extends ServiceEntityRepository
         ->getResult();
     }
     /**
+     * @param string $query
+     * $return mixed
+     */
+public function findPostsByName(string $query){
+    $qb = $this->createQueryBuilder('p');
+    $qb
+        ->where(
+            $qb->expr()->andX(
+                $qb->expr()->orX(
+                    $qb->expr()->like('p.name', ':query'),
+                    $qb->expr()->like('p.foto', ':query')
+
+                ),
+                $qb->expr()->isNotNull('p.fechaPublicacion')
+            )
+        )
+        ->setParameter('query','%' .$query . '%');
+        return $qb
+                ->getQuery()
+                ->getResult();
+}
+
+    /**
      * @return @Query
      */
     public function findAllVisibleQuery(PropertySearch $search): Query
