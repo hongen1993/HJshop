@@ -49,7 +49,7 @@ class PostsController extends AbstractController
             $pagination = $paginator->paginate(
                 $query, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
-                12 /*limit per page*/
+                24 /*limit per page*/
             );
             return $this->render('posts/index.html.twig', [
                     'pagination' => $pagination,
@@ -68,7 +68,9 @@ class PostsController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $brochureFile = $form['foto']->getData();
+            $brochureFile = $form->get('foto')->getData();
+            $brochureFileB = $form->get('fotoB')->getData();
+
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
@@ -90,6 +92,28 @@ class PostsController extends AbstractController
                 // instead of its contents
                 $post->setFoto($newFilename);
             }
+            if ($brochureFileB) {
+                $originalFilename = pathinfo($brochureFileB->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFileB->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $brochureFileB->move(
+                        $this->getParameter('fotos_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    throw new \Exception('ERROR');
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $post->setFotoB($newFilename);
+            }
+                
             $user = $this->getUser();
             $post->setUser($user);
             $em = $this->getDoctrine()->getManager();
@@ -126,8 +150,8 @@ class PostsController extends AbstractController
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $brochureFile = $form['foto']->getData();
-            $brochureFileB = $form['fotoB']->getData();
+            $brochureFile = $form->get('foto')->getData();
+            $brochureFileB = $form->get('fotoB')->getData();
              if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
