@@ -13,7 +13,7 @@
                 {% for category in pagination  %}
                     <div class="col-md-3 cursor" style="margin-bottom:2em">
                         <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
-                            <h3>{{category.name}}</h3>
+                            <h4>{{category.name}}</h4>
                                 <div class="align-self-center">
                                     <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
                                 </div>
