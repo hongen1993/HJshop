@@ -35,7 +35,7 @@ use Symfony\Component\HttpFoundation\File\Exception\PartialFileException;
 class PostsController extends AbstractController
 {
     /**
-     * @Route("/articulos", name="posts_index", methods={"GET"})
+     * @Route("/articulos", name="posts_index", methods={"GET", "POST"})
      */
 
         public function index(PaginatorInterface $paginator, Request $request): Response
@@ -258,7 +258,7 @@ class PostsController extends AbstractController
             throw new \Exception('Hacking FAIL');
         }        
     }
-        /**
+    /**
      * @Route("/administrador", name="administrador", methods={"GET"})
      */
     public function administrador(Request $request, PaginatorInterface $paginator): Response
@@ -274,10 +274,9 @@ class PostsController extends AbstractController
                     'pagination' => $pagination
             ]);
     }
-
     public function searchBar(){
         $form = $this->createFormBuilder()
-        ->setAction($this->generateUrl('handleSearch'))
+        ->setAction($this->generateUrl('handlesearch'))
         ->add('Nombre',TextType::class)
         ->add('Buscar', SubmitType::class)
         ->getForm();
@@ -286,7 +285,7 @@ class PostsController extends AbstractController
         ]);
     }
     /**
-     * @Route("/handleSearch", name="handleSearch")
+     * @Route("/buscar", name="handlesearch")
      * @param Request $request
      */
     public function handleSearch(Request $request, PostsRepository $postsRepository){
@@ -294,10 +293,8 @@ class PostsController extends AbstractController
         if($query){
             $posts = $postsRepository->findPostsByName($query);
         }
-
         return $this->render('posts/results.html.twig',[
             'posts' => $posts
         ]);
-
     }
 }

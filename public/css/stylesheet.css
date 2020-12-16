@@ -115,8 +115,9 @@ ul li{
 #topnavbar3 {
   font-family: "signikaregular";
   position: absolute;
-  top: 37.3%;
+  top: 35%;
   right: 7%;
+  text-align: center;
 }
 
 /* Colors */
