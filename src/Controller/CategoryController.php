@@ -174,4 +174,16 @@ class CategoryController extends AbstractController
             'pagination' => $pagination
         ]);
     }
+    public function helloAction($name)
+{
+    // The second parameter is used to specify on what object the role is tested.
+    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+    // Old way:
+    // if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+    //     throw $this->createAccessDeniedException('Unable to access this page!');
+    // }
+
+    // ...
+}
 }

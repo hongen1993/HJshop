@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="nav">
+        <a href="{{path('dashboard')}}">
+             <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
+              </a>
+     </div>   
+<div class="container" style="margin-top:15em; font-size:1.5em">
+    <div class="text-center">
+        <h1>Compra completada</h1>
+        <hr>
+        <p>Su compra por valor de {{ total }} € ha sido realizada con éxito !</p>
+        <p>El pedido saldrá en seguida de nuestro almacén<p>
+    </div>
+</div>
+        <div id="delayMsg" class="text-center"></div>
+<script>
+ window.onload = delayRedirect();
+ function delayRedirect(){
+
+    document.getElementById('delayMsg').innerHTML = 'Please wait you\'ll be redirected after <span id="countDown">10</span> seconds....';
+
+    var count = 10;
+    setInterval(function(){
+        count--;
+        document.getElementById('countDown').innerHTML = count;
+        if (count == 0) {
+            window.location = '{{path("cart_removeAllCart")}}'; 
+        }
+    },1000);
+}
+</script>
+{% endblock %}

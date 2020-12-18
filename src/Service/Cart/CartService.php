@@ -3,6 +3,7 @@
 namespace App\Service\Cart;
 
 use App\Repository\PostsRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService {
@@ -35,6 +36,13 @@ class CartService {
             unset($cart[$id]);
         }
         $this->session->set('cart', $cart);
+    }
+
+    public function removeAll(Request $request){
+        $cart = $this->session->get('cart', []);
+
+        $this->session->clear('cart', $cart);
+
     }
 
     public function getFullCart() : array {

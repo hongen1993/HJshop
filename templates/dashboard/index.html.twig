@@ -11,21 +11,21 @@
                         <div class="image" style="background-image:url( {{ asset('img/login.jpg') }} );"></div>
                         <div class="content">
                         <h2>Colección Lenceria 2020</h2>
-                        <a href="{{path('category_show',{id:12})}}">Ver todo</a>
+                        <a href="{{path('category_id_index',{category:12})}}">Ver todo</a>
                         </div>
                     </li>
                     <li>
                         <div class="image" style="background-image:url( {{ asset('img/pijamas.png') }} );"></div>
                         <div class="content">
                         <h2>Pijamas Invierno 2020</h2>
-                        <a href="{{path('category_show',{id:2})}}">Ver todo</a>
+                        <a href="{{path('category_id_index',{category:2})}}">Ver todo</a>
                         </div>
                     </li>
                     <li>
                         <div class="image" style="background-image:url( {{ asset('img/bikinis.jpg') }} );"></div>
                         <div class="content">
                         <h2>Nueva Coleccion Bikinis</h2>
-                        <a href="{{path('category_show',{id:5})}}">Ver todo</a>
+                        <a href="{{path('category_id_index',{category:5})}}">Ver todo</a>
                         </div>
                     </li>
                     </ul>
@@ -34,7 +34,7 @@
                         <div class="col-md-4 pb-2">
                             <div class="bg-white rounded  button-container">              
                                 <img class="rounded hoverable" src="{{ asset('img/pijama.jpg')}}" width="100%" height="450px">
-                                <a href="{{path('category_id_index',{category:5})}}" alt="Pijamas">Pijamas</a>
+                                <a href="{{path('category_id_index',{category:2})}}" alt="Pijamas">Pijamas</a>
                             </div>
                         </div>
                         <div class="col-md-4 pb-5">
@@ -58,20 +58,25 @@
                             <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
                                 <h5>{{post.name}}</h5>
                                     <div class="align-self-center ex2">
-                                        <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~post.foto)}}" width="90%" height="175px">
+                                        <img class="rounded hoverable " src="{{ asset('uploads/fotos/'~post.foto)}}" width="90%" height="175px">
+                                    </div>
                                             <div class="text-center">
-                                                <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span>
-                                                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-light btn-sm">
-                                                        <i class="fas fa-cart-arrow-down"></i>
+                                                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger  btn-lg publicationDate" style="width:45%">
+                                                        Añadir al carrito
                                                     </a>
+                                                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-success btn-lg publicationDate" style="width:45% ">
+                                                        Comprar
+                                                    </a>
+                                                <p class="my-2 postTextSize"> Antes : <s>{{post.precioAntes}}</s> <span id="colorRed">Ahora : {{post.precio}} €</span></p>
+                                                <p>
+
                                                 </p>
                                             </div>
                                             <div class="publicationDate text-center">
-
                                                 <p><i class="far fa-clock" style="color:#000"></i>
                                                 Fecha de publicación: {{ post.fechaPublicacion | date}}</p>
                                             </div>
-                                    </div>
+                                    
                                 <hr>
                             </div>      
                         </div>

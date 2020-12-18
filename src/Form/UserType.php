@@ -34,6 +34,7 @@ class UserType extends AbstractType
             ->add('direccion')
             ->add('registrar', SubmitType::class)
         ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)

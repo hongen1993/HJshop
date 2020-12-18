@@ -1,0 +1,135 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="nav">
+        <a href="{{path('dashboard')}}">
+             <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
+              </a>
+     </div>   
+    <div class="container" style="margin-top:18em">
+        <div class="row text-center login-form" style="padding:4em">
+	        <div class="col-md-7">
+                <h3>Resumen del pedido</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Articulo</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{item.post.name}}</td>
+                                <td>{{item.post.precio}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.post.precio * item.quantity}}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-right">Total:
+                            </td>
+                            <td>{{ total }}</td>
+                            <td></td>
+                </table>
+                <a href="{{path('cart_index')}}" class="btn btn-danger">Cancelar</a>
+            </div>
+            <div class="col-md-5" style="padding-left:18em">
+                <h3 class="text-center">Pagar</h3>
+                    <form method="post" action="{{path('success')}}" id="payment-form">
+                        <div class="form-row">
+                            <input type="text" name="nombre" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Nombre">
+                            <input type="text" name="apellidos" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Apellidos">
+                            <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Correo electrónico">
+
+
+                            <label for="card-element">
+                                Tarjeta de crédito o débito
+                            </label>
+                            <div id="card-element" class="form-control">
+
+                            </div>
+
+                            <div id="card-errors" role="alert">
+                            
+                            </div>
+                        </div>
+                        <br>
+                        <a href="{{path('success')}}"><button class="btn btn-primary"> Pagar </button></a>          
+                    </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            var stripe = Stripe('pk_test_51HyylkJtahhmAdPzeBU5Pv5l9muMqUsnjlTfABo5Z1KzK1mqgwGuWbsKdNgbA60l118bxKcqcrdvaIWdhnR0lPj600ZsQMnyVj');
+            var elements = stripe.elements();
+
+            var style = {
+                base: {
+                    color:'#32325d',
+                    fontFamily:'"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing:'antialiased',
+                    fontSize:'10px',
+                        '::placeholder':{
+                            color:'#aab7c4'
+                        }
+                },
+                invalid:{
+                    color:'#fa755a',
+                    iconColor:'#fa755a'
+                }
+            };
+            
+            document.querySelector('#payment-form button').button = 'btn-lock mt-4';
+
+            var card = elements.create('card', {style: style});
+
+            card.mount('#card-element');
+
+            card.addEventListener('change', function(event){
+                var displayError = document.getElementById('card-errors');
+                if(event.error){
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event){
+                event.preventDefault();
+
+                stripe.createToken(card).then(function(result){
+                    if(result.error){
+
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        stripeTokenHandler(result.token);
+                    }
+                });
+            });
+
+            function stripeTokenHandler(token) {
+                var form = document.getElementById('payment-form');
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', 'token.id');
+                form.appendChild(hiddenInput);
+
+                form.submit();                
+            }
+            
+        </script>
+    {% endblock %}
