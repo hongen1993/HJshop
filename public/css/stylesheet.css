@@ -182,7 +182,7 @@ ul li{
 }
 
 .ex2 img {
-  height: 175px;
+  height: 205px;
   width: 90%;
   margin: 15px 5%;
   -webkit-transition: all 1s ease;
@@ -192,9 +192,9 @@ ul li{
 }
 
 .ex2 img:hover {
-  height: 200px;
+  height: 225px;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: -2px;
 }
 

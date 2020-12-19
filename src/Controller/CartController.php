@@ -30,6 +30,15 @@ class CartController extends AbstractController
         
         return $this->redirect($request->headers->get('referer'));
     }
+    /**
+     * @Route("/carrito/add/{id}", name="buy_cart")
+     */
+    public function buyCart($id, CartService $cartService,Request $request)
+    {
+        $cartService->add($id);
+        
+        return $this->redirect($request->headers->get('cart_index'));
+    }
 
     /**
      * @Route("carrito/remove/{id}", name="cart_remove")

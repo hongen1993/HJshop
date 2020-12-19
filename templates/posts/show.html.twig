@@ -52,7 +52,10 @@
                         <p>Quedan {{post.stock}} en stock</p>
                     </div>
                     <div>
-                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger">Añadir al carrito</a>
+                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger"  style="width:45%">Añadir al carrito</a>
+                    <a href="{{ path('buy_cart' , {'id': post.id})}}" type="button" class="btn btn-outline-success" style="width:45% ">
+                                                        Comprar
+                                                    </a>
                     </div>
                         <hr>
                     <div class="publicationDate" style="color:#000;">
