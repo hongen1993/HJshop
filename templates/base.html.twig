@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
             <script src="https://js.stripe.com/v3/"></script>
 
         {% endblock %}
@@ -44,6 +45,7 @@
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:2})}}">Pijamas</a></li>
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:5})}}">Bikinis</a></li>
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:7})}}">Camisetas interiores</a></li>
+                        <li><a class="dropdown-item" href="{{path('category_id_index',{category:9})}}">Batas </a></li>
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:12})}}">Sujetadores</a></li>
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:13})}}">Tops</a></li>
                         <li><a class="dropdown-item" href="{{path('category_id_index',{category:14})}}">Bragas</a></li>
@@ -77,10 +79,7 @@
                     <hr>
                     <p><a href="{{ path('category_index')}}">Buscar por categorías</a></p>
                     <hr>
-                    <p><a href="{{ path('posts_index')}}">Buscar por rango de precios</a></p>
-                    <hr>
-                    Buscar por
-                    {{ render(controller('App\\Controller\\PostsController:searchbar')) }}
+                    <p><a href="{{ path('posts_index')}}">Buscar por nombre o rango de precios</a></p>
                 </div>
             </div>
                  

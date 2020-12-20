@@ -25,6 +25,8 @@ class DashboardController extends AbstractController
             'posts' => $posts
         ]);
     }
+
+    
     public function helloAction($name)
 {
     // The second parameter is used to specify on what object the role is tested.

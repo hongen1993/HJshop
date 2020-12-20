@@ -13,22 +13,22 @@
             <br>
 
             <div class="row no-gutters" style="margin-bottom:5em;">
-                <div class="col-lg-7">
+                <div class="col-lg-4">
                         <div class="align-self-center">
                             <img class="imgpost" src="{{asset('uploads/fotos/')~post.foto}}">
                         </div>
                 </div>
-{#                 <div class="col-lg-4">
+                <div class="col-lg-4">
                         <div class="align-self-center">
                             <img class="imgpost" src="{{asset('uploads/fotos/')~post.fotob}}">
                         </div>
-                </div> #}
+                </div> 
                 <div class="col-lg-4">
                     <br>
                     <h3>{{post.name}}</h3>
                     <br>
-                    <div class="my-3 text-right " style="color:#bbb;">
-        {#                 <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
+{#                     <div class="my-3 text-right " style="color:#bbb;">
+                         <input type="checkbox" id="btnLikeControl" onClick="MeGusta({{post.id}})"/>
 
                         {% if app.user.id in LikesDeEstePost %}
                             Te gustó esto
@@ -38,25 +38,26 @@
                             ¿Te gusta esto?
                                             <label class="btn" for="btnLikeControl"><i class="btnLikeColor far fa-heart"></i>
                         </label>  
-                            {% endif %} #}
-                    </div>
+                            {% endif %} 
+                    </div> #}
                     
                     <div class="text-justify my-3">
+                        <div class="contenedor-modal">
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#miModal"><i class="fas fa-exclamation-circle"></i></button>
+                        </div>
                         <p>{{post.contenido}}</p>
                         <br>
                         <br>
                         <br>
                         <br>
-                        <p class="my-2 postTextSize"> Antes : <span id="tachado">{{post.precioAntes}}</span> <span id="colorRed">Ahora : {{post.precio}} €</span></p>
+                        <p class="my-2 postTextSize"> Unidad : {{post.precioAntes}} <span id="colorRed">Paquete : {{post.precio}} €</span></p>
                         <br>
                         <p>Quedan {{post.stock}} en stock</p>
                     </div>
-                    <div>
                     <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger"  style="width:45%">Añadir al carrito</a>
                     <a href="{{ path('buy_cart' , {'id': post.id})}}" type="button" class="btn btn-outline-success" style="width:45% ">
                                                         Comprar
                                                     </a>
-                    </div>
                         <hr>
                     <div class="publicationDate" style="color:#000;">
                         <i class="far fa-clock"></i>Fecha de publicación : {{post.fechaPublicacion | date}}
@@ -66,6 +67,25 @@
             <br>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="margin-top:16em">
+      <div class="modal-header">
+        <h4 class="modal-title">Informacion tallas y colores</h4>
+      </div>
+      <div class="modal-body">
+        <p>Todos los artículos se venden por paquetes.</p>
+        <p>Cada paquete viene con 12 unidades.</p>
+        <p>Las tallas de la ropa van desde la S a XL,
+        la de los calcetines de hombre 40-46 y de mujer 35-40,
+        de sujetadores solo copa C que es la mas demandada: 85C,90C,95C 100C 105C</p>
+        <p>Todos los paquetes vienen surtido de colores que serian:
+        Blanco, negro, beige, rojo/rosa , azul oscuro/claro y verde/burdeos.</p>
+      </div>
+    </div>
+  </div>
 </div>
     <footer>
     <div class="footercontent row">
@@ -92,7 +112,4 @@
 {% endblock %}
 {% block javascripts %}
 {{parent()}}
-<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-<script src="{{ asset('js/ajax-call.js')}}"></script>
 {% endblock %}
