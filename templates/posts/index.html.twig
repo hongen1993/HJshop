@@ -10,10 +10,8 @@
                 <h5><a href="{{ path('category_index')}}">Buscar por categorias</a></h5>
             <hr>
             <br>
-            <div>
                 <h5>Buscar por nombre</h5>
-                {{ render(controller('App\\Controller\\PostsController:searchbar')) }}                
-            </div>
+                    {{ render(controller('App\\Controller\\PostsController:searchbar')) }}
             <br>
             <h5>Filtrar por precio</h5>
             {{ form_start(form) }}

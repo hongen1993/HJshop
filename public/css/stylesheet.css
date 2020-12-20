@@ -589,4 +589,6 @@ footer {
         top: -50%;
         right: -100%;
       }
-   
+   #hiddeError{
+     display: none;
+   }

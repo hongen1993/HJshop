@@ -80,6 +80,8 @@
                     <p><a href="{{ path('category_index')}}">Buscar por categorías</a></p>
                     <hr>
                     <p><a href="{{ path('posts_index')}}">Buscar por nombre o rango de precios</a></p>
+                                        <div id="hiddeError">{{ render(controller('App\\Controller\\PostsController:searchbar')) }}</div>
+
                 </div>
             </div>
                  

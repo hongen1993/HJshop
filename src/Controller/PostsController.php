@@ -277,7 +277,6 @@ class PostsController extends AbstractController
         $form = $this->createFormBuilder()
         ->setAction($this->generateUrl('handlesearch'))
         ->add('Nombre',TextType::class)
-        ->add('Buscar', SubmitType::class)
         ->getForm();
         return $this->render('posts/searchbar.html.twig', [
             'form' => $form->createView()
