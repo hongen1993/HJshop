@@ -239,7 +239,6 @@ class PostsController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/Likes", options={"expose"=true}, name="Likes")
      */
