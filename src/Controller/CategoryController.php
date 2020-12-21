@@ -38,7 +38,7 @@ class CategoryController extends AbstractController
             $pagination = $paginator->paginate(
                 $query, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
-                22 /*limit per page*/
+                12 /*limit per page*/
             );
         return $this->render('category/index.html.twig', [
             'pagination' => $pagination
@@ -168,7 +168,7 @@ class CategoryController extends AbstractController
             $pagination = $paginator->paginate(
                 $query, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
-                12 /*limit per page*/
+                8 /*limit per page*/
             );
         return $this->render('category/miniindex.html.twig', [
             'pagination' => $pagination

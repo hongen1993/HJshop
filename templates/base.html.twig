@@ -18,7 +18,7 @@
         {% block body %}
         <div class="nav">
             <a href="{{path('dashboard')}}">
-                <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
+                <img src="{{ asset('img/hjlogo.png') }}" class="navbar-brand">
             </a>
         </div>   
     <nav class="navbar navbar-fixed-top ">
@@ -75,11 +75,11 @@
                     <i class="fas fa-search"></i>       
                 </button>
                 <div class="dropdown-menu" style="text-align:center">
-                    <p><a href="{{path('posts_index')}}">Todos los articulos</a></p>
+                    <a href="{{path('posts_index')}}">Todos los articulos</a>
                     <hr>
-                    <p><a href="{{ path('category_index')}}">Buscar por categorías</a></p>
+                    <a href="{{ path('category_index')}}">Buscar por categorías</a>
                     <hr>
-                    <p><a href="{{ path('posts_index')}}">Buscar por nombre o rango de precios</a></p>
+                    <a href="{{ path('posts_index')}}">Buscar por nombre o rango de precios</a>
                                         <div id="hiddeError">{{ render(controller('App\\Controller\\PostsController:searchbar')) }}</div>
 
                 </div>

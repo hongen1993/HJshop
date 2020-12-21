@@ -4,16 +4,18 @@
 
 {% block body %}
 {{parent()}}
+<div class="wrapper bg-white">
+    <div class="wrap bg-white">
 <div class="container">
     <div class="jumbotron">
         <div class="container">
-                <h5><a href="{{ path('category_index')}}">Buscar por categorias</a></h5>
+                <h5 class="search"><a href="{{ path('category_index')}}">Buscar por categorias</a></h5>
             <hr>
             <br>
-                <h5>Buscar por nombre</h5>
+                <h5 class="search">Buscar por nombre</h5>
                     {{ render(controller('App\\Controller\\PostsController:searchbar')) }}
             <br>
-            <h5>Filtrar por precio</h5>
+            <h5 class="search">Filtrar por precio</h5>
             {{ form_start(form) }}
             <div class="form-row">
                 <div class="col">
@@ -29,30 +31,34 @@
             {{ form_end(form) }}
         </div>
     </div>
-    <h3>Todos los artículos</h3>
+    <h3 class="search">Todos los artículos</h3>
     <div class="row postsRow">
         {% for post in pagination %}
-            <div class="col-md-3 cursor">
-                <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
-                    <h3>{{post.name}}</h3>
-                        <div class="align-self-center">
-                            <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~post.foto)}}" width="90%" height="175px">
-                                <div class="text-center postTextSize">
-                                <p class="my-2"> Unidad : {{post.precioAntes}} <span id="colorRed">Paquete : {{post.precio}} €</span>
-                                    <button type="button" class="btn btn-light btn-sm">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </button>
-                                    </p>
-                                </div>
-                                <div class="publicationDate">
-                                    <br>
-                                    <p><i class="far fa-clock" style="color:#000"></i>
-                                     Fecha de publicación: {{ post.fechaPublicacion | date}}</p>
-                                </div>
+             <div class="cursor transparent end" id="colArticles">
+                            <div class="bg-white rounded" onclick="window.location.href='{{path('posts_show',{id:post.id})}}'">
+                                <h5>{{post.name}}</h5>
+                                    <div class="align-self-center ex2">
+                                        <img class="rounded hoverable " src="{{ asset('uploads/fotos/'~post.foto)}}" width="90%" height="210px">
+                                    </div>
+                                            <div class="text-center">
+                                                    <a href="{{ path('cart_add' , {'id': post.id})}}" type="button" class="btn btn-outline-danger  btn-lg publicationDate" style="width:45%">
+                                                        Añadir al carrito
+                                                    </a>
+                                                    <a href="{{ path('buy_cart' , {'id': post.id})}}" type="button" class="btn btn-outline-success btn-lg publicationDate" style="width:45% ">
+                                                        Comprar
+                                                    </a>
+                                                <p class="my-2">Precio Pqt : {{post.precio}} / <span id="colorRed">Precio Ud : {{post.precioAntes}}€</span></p>
+                                                <p>
+
+                                                </p>
+                                            </div>
+                                            <div class="publicationDate text-center">
+                                                <i class="far fa-clock" style="color:#000"></i>
+                                                Fecha de publicación: {{ post.fechaPublicacion | date}}
+                                            </div>
+                                <hr>
+                            </div>      
                         </div>
-                    <hr>
-                </div>      
-            </div>
         {% endfor %}
     </div>
 </div>
@@ -61,4 +67,27 @@
         {{knp_pagination_render(pagination)}}
     </div>
 </div>
+    </div>
+</div>
+<footer>
+    <div class="footercontent row">
+        <div class="col-3" >
+                <img src="{{ asset('img/hjlogo2.png') }}" class="logo">
+        </div>
+        <div class="col-6 text-center">
+            <p>El contenido de esta página web está protegido por copyright y es propiedad de HJ</p>
+             <p>Comercio mayorista</p>
+            <br>
+            <hr>
+            <br>
+            <p>Web diseñada y creada por : Hongen Shyu Barcel</p>
+           </div>
+           <div class="col-3">
+               <div id="contactfooter">
+                   <p>Tlf de contacto: 644751012</p>
+                <p>Email: Hongen1993@gmail.com</p>
+               </div>
+           </div>            
+       </div>
+</footer>
 {% endblock %}

@@ -8,12 +8,12 @@
 <div class="wrapper bg-white">
     <div class="wrap bg-white">
         <div class="container">
-            <h3>Todas las categorías</h3>
+            <h3 class="search">Todas las categorías</h3>
             <div class="row postsRow">
                 {% for category in pagination  %}
-                    <div class="col-md-3 cursor" style="margin-bottom:2em">
-                        <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'">
-                            <h4>{{category.name}}</h4>
+                    <div class="cursor" style="margin-bottom:2em"   id="colArticles">
+                        <div class="bg-white rounded" onclick="window.location.href='/categoria/{{category.id}}/index'" >
+                            <h4 class="search">{{category.name}}</h4>
                                 <div class="align-self-center">
                                     <img class="rounded hoverable" src="{{ asset('uploads/fotos/'~category.foto)}}" width="90%" height="175px">
                                 </div>
