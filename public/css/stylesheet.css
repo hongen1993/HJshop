@@ -521,7 +521,9 @@ footer {
 .end {
   margin-bottom: 35px;
 }
-
+.navigation{
+  font-size: 3em;
+}
 
 /* minilogin */
 
@@ -539,9 +541,7 @@ footer {
   text-decoration: none;
   color: #111;
 }
-
-
-    .adminbutton {
+    .adminbutton{
       width: 30em;
       left: 40%;
       background: transparent; 
@@ -593,10 +593,23 @@ footer {
      margin-top: 15em;
    }
    
+   #pagar{
+    margin-top:18em;
+   }
+   #tarjeta{
+    padding-left:18em;
+   }
    /* Responsive mobile 479px */
-   @media only screen and (min-width: 479px){
+   @media only screen and (min-width: 479px)
+   {
+    body{
+      font-size: 3.5em;
+    }
+    .container h3{
+      font-size:1.2em;
+    }
     .navbar {
-      font-size: 3.3em;
+      font-size: 1.1em;
     }
     .navbar-brand {
       right:36%;
@@ -647,7 +660,7 @@ footer {
       height: 100%;
     }
     .content h2{
-    font-size: 2.5em;
+    font-size: 1.1em;
      }
      .button-container a {
       bottom: 5em;
@@ -682,6 +695,27 @@ footer {
       width: 100%;
       height: 100%;
     }
+    .imgpost {
+      width: 100%;
+      height: 1000px;
+      margin-bottom: 5em;
+    }
+    #showCol h3{
+      font-size: 1.5em;
+    }
+    .modal-title{
+      font-size: 1.2em;
+    }
+    .cartTitle h1{
+      font-size: 1em;
+    }
+    .login-page{
+      max-width: 800px;
+    }
+    .login-form{
+      padding:1em;
+      font-size: 0.8em;
+    }
     .ex2 img{
       height: 300px;
       width: 90%;
@@ -700,30 +734,62 @@ footer {
       font-size:16.5px;
     }
     footer{
-      padding-top: 220px;
+      padding-top: 300px;
     }
+    footer img{
+      font-size: 0.45em;
+    }
+    #contactfooter{
+      margin-top:2em;
+      margin-left: 1em;
+      font-size: 0.8em;
+      }
     .search{
       font-size:2em;
     }
     .navigation{
-      font-size: 3em;
+      font-size: 1.3em;
+    }
+    .statsCol3{
+      width: 33%;
+    }
+    .statsCol2{
+      width: 50%;
+    }
+    .userShow{
+      font-size: 3.3em;
     }
     .userStats{
-      font-size: 2.5em;
-      margin: 3em 1em;
+      font-size: 0.7em;
+      margin: 3em 3em;
     }
     .adminbutton{
-    left:35%;
+    left:17%;
+    font-size: 0.8em;
    }
    .userShowEdit{
-    margin-top: 30em;
+    margin-top: 10em;
   }
   .formFont{
-    font-size: 3em;
+    font-size: 1.3em;
   }
   .form-control{
     font-size: 1em;
   }
+  .payCol{
+    width: 100%;
+  }
+  .payCol h3{
+    font-size: 1.3em;
+  }
+  #pagar{
+    margin-top:10em;
+   }
+   #tarjeta{
+    padding-top:2em;
+    padding-left:0em;
+   }
+}
    /*  Responsive computer 1024px */
 
    @media only screen and (min-width: 1024px){
@@ -1224,7 +1290,9 @@ footer {
   .end {
     margin-bottom: 35px;
   }
-  
+  .navigation{
+    font-size: 3em;
+  }
   
   /* minilogin */
   .minilogin {
@@ -1260,8 +1328,10 @@ footer {
       }
   
       /*button:before (attr data-hover)*/
-      .adminbutton:hover:before{opacity: 1; transform: translate(0,0);
-      left:4.05em;  }
+      .adminbutton:hover:before{
+      opacity: 1; transform: translate(0,0);
+      left:4.05em;  
+    }
       .adminbutton:before{
         content: attr(data-hover);
         position: absolute;
@@ -1274,7 +1344,8 @@ footer {
         transition: all 10s ease-in-out;
       }
         /*button div (button text before hover)*/
-       .adminbutton:hover div{opacity: 0; transform: translate(100%,0)}
+       .adminbutton:hover div{opacity: 0; transform: translate(100%,0)
+      }
         .adminbutton div{
           text-transform: uppercase;
           font-weight: 800;
@@ -1310,6 +1381,12 @@ footer {
       width: 100%;
       height: 450px;
     }
+    #pagar{
+      margin-top:18em;
+     }
+     #tarjeta{
+      padding-left:18em;
+     }
     }
     @media only screen and (min-width: 1200px){
       .imgpost {

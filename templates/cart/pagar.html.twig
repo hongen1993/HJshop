@@ -6,9 +6,9 @@
              <img src="{{ asset('img/hjlogo.png') }}"  width="9%" height="125px" class="navbar-brand" id="colorblack" >
               </a>
      </div>   
-    <div class="container" style="margin-top:18em">
+    <div class="container" id="pagar">
         <div class="row text-center login-form" style="padding:4em">
-	        <div class="col-md-7">
+	        <div class="payCol">
                 <h3>Resumen del pedido</h3>
                 <table class="table">
                     <thead>
@@ -40,7 +40,7 @@
                 </table>
                 <a href="{{path('cart_index')}}" class="btn btn-danger">Cancelar</a>
             </div>
-            <div class="col-md-5" style="padding-left:18em">
+            <div class="payCol" id="tarjeta">
                 <h3 class="text-center">Pagar</h3>
                     <form method="post" action="{{path('success')}}" id="payment-form">
                         <div class="form-row">

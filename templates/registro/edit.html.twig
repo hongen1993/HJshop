@@ -13,7 +13,8 @@
         <h4>Editar cuenta de usuario</h4>
 
         {{ include('registro/_form.html.twig', {'button_label': 'Guardar cambios'}) }}
-    
+        
+           <a href="{{path('user_index', {'id': app.user.id} )}}">Atras</a>
         <br>
         <br>
         <br>
