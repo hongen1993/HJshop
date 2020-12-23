@@ -744,6 +744,7 @@ footer {
       margin-left: 1em;
       font-size: 0.8em;
       }
+      
     .search{
       font-size:2em;
     }
@@ -1233,7 +1234,9 @@ footer {
     height: 20px;
     width: 20px;
   }
-  
+  footer{
+    padding-top: 200px;
+  }
   .footernav {
     position: absolute;
     right: 0;
@@ -1251,7 +1254,12 @@ footer {
     margin-right: 10px;
     z-index: 2;
   }
-  
+  .footercontent p{
+    font-size:14px;
+  }
+  footer img{
+    font-size: 0.75em;
+  }
   .wrap {
     z-index: 1;
     position: relative;
@@ -1371,6 +1379,13 @@ footer {
     }
     #colArticles{
       width: 25%;
+    } 
+    #colArticles h5{
+      font-size: 1.5rem;
+    }
+    #colArticles p{
+
+      font-size: 15px;
     }
     #colDashboard{
       width: 29.5%;
