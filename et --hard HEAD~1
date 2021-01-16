@@ -1,0 +1,49 @@
+[33m739bdd5[m[33m ([m[1;36mHEAD[m[33m)[m Add Heroku procfile
+[33mdb4cd03[m Set theme jekyll-theme-cayman
+[33m328b9f1[m Rename index.html to index.html.twig
+[33m9e41ce7[m[33m ([m[1;31morigin/hjshop1[m[33m)[m Rename index.html.twig to index.html
+[33mebc1dbf[m[33m ([m[1;31mheroku/master[m[33m, [m[1;32mmaster[m[33m)[m triying html.twig
+[33m55810c1[m delete cname
+[33m4856269[m[33m ([m[1;31morigin/hjshop[m[33m)[m Delete CNAME
+[33me9632dc[m Create CNAME
+[33mccecf86[m Create CNAME
+[33m6b0b365[m responsive v1.3
+[33m2e53b5e[m responsive v1.2
+[33m36685ec[m making it responsive
+[33macb5412[m finish v1.5
+[33ma1bfcb9[m finish v1.4
+[33m674aa54[m  finish v1.3
+[33m77e38dc[m finish v1.2
+[33m4835c2a[m finish 1.1
+[33me8dad2f[m finish
+[33m09a675d[m search stuff fixed
+[33m7dd5db4[m dashboard
+[33m6f44d8a[m categories1.1
+[33m6b1bef2[m added categories
+[33m990e3d7[m  remove cours-ajax
+[33m73eb40c[m error adding post or categories with foto
+[33mb04af3c[m finished search function
+[33mb0f921e[m error
+[33m422605b[m added filter price and admin user
+[33mc6e6d01[m added user show , user edit
+[33m404e55d[m added styles, slider , footer and cours-ajax
+[33mda52d2e[m added shopping cart
+[33m79b4c96[m added categorypost and some stylesheet
+[33m7ccbc48[m error
+[33m1335cb6[m addint styles 4.0 ,correct spelling mistakes and added security routes for ADMIN
+[33mae18fcb[m adding styles 3.0
+[33m4a02979[m adding styles 2.0
+[33m32086fa[m added style
+[33m4426c46[m maked nav in base.html.twig,parent in templates and added bootstrap,css...
+[33m4cf5ed6[m installed paginator
+[33mbebe679[m dashboardPosts and postsPosts Almost done
+[33md9129c4[m posts controller and templates functions done
+[33m59122b3[m category 1.0
+[33mf7b1ddd[m entity category crud
+[33m71998c7[m adding entity category
+[33mf2f58af[m PostController ,PostForm and uploading method
+[33m6408cfc[m good practices(using const&&constructor)
+[33mebeefe8[m PasswordEncoder & User-Login
+[33m9c78ed7[m added controllers and registerform
+[33mdeb0fa7[m entities&relations
+[33m11fd821[m Add initial set of files
